@@ -33,11 +33,18 @@
     <md-card-area>
       <md-card-content>
         <h4 class="md-caption">Привлекаемые средства:</h4>
-        <div class="members">
-          <div v-for="member in project.members" :key="member.id" v-if="member.avatar" class="item">
-            <md-avatar>
-              <img :src="member.avatar.url" />
-            </md-avatar>
+        <div class="stats">
+          <div class="item">
+            <chart
+              type="doughnut"
+              :config="timeChartFactory(timeProgress)"
+            />
+          </div>
+          <div class="item">
+            <chart
+              type="doughnut"
+              :config="valueChartFactory(valueProgress)"
+            />
           </div>
         </div>
       </md-card-content>
