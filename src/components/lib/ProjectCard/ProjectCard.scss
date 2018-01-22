@@ -1,0 +1,36 @@
+@import '~@/styles/partials/mixins';
+@import '~@/styles/partials/variables';
+
+.root.component-project-card {
+  .md-card-media {
+    // background: rgba(#006179, 0.3);
+    // img {
+    //   display: inherit;
+    //   margin: 0 auto;
+    //   max-height: fit-content;
+    //   max-width: fit-content;
+    //   height: 240px;
+    // }
+  }
+
+  .overlay {
+    @include position(absolute, 16px, 16px, 16px, 16px);
+
+    // .overlay-progress {
+    //   @include position(absolute, 0, auto, auto, 0);
+    // }
+    //
+    // .overlay-curators {
+    //   @include position(absolute, auto, 0, 0, auto);
+    // }
+  }
+
+  .members {
+    display: flex;
+    margin: -4px;
+    >.item {
+      flex: 0 0 auto;
+      margin: 4px;
+    }
+  }
+}

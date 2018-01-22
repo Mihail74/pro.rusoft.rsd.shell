@@ -24,7 +24,7 @@ export default class UserModel extends AbstractModel {
   static fromJS (data) {
     return data == null ? null : new UserModel({
       ...data,
-      avatar: ImageShort.fromServer()
+      avatar: ImageShort.fromJS(data.avatar)
     })
   }
 }

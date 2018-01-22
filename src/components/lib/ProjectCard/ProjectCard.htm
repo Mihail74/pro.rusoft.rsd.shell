@@ -1,0 +1,50 @@
+<div class="root component-project-card">
+  <md-card md-with-hover>
+    <md-card-media>
+      <img :src="project.thumbnail.url" />
+      <div class="overlay">
+        <div class="overlay-progress">
+          <md-avatar class="md-large" v-if="project.user.avatar">
+            <img :src="project.user.avatar.url" />
+          </md-avatar>
+        </div>
+      </div>
+    </md-card-media>
+    <md-card-area>
+      <md-card-header>
+        <md-card-header-text>
+          <h3 class="md-title">{{project.name}}</h3>
+          <div class="md-subhead">{{project.description}}</div>
+        </md-card-header-text>
+      </md-card-header>
+    </md-card-area>
+    <md-card-area>
+      <md-card-content>
+        <h4 class="md-caption">Авторы и консультанты:</h4>
+        <div class="members">
+          <div v-for="member in project.members" :key="member.id" v-if="member.avatar" class="item">
+            <md-avatar>
+              <img :src="member.avatar.url" />
+            </md-avatar>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card-area>
+    <md-card-area>
+      <md-card-content>
+        <h4 class="md-caption">Привлекаемые средства:</h4>
+        <div class="members">
+          <div v-for="member in project.members" :key="member.id" v-if="member.avatar" class="item">
+            <md-avatar>
+              <img :src="member.avatar.url" />
+            </md-avatar>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card-area>
+    <md-card-actions>
+      <md-button>Подробно</md-button>
+      <md-button class="md-primary md-raised">Поддержать</md-button>
+    </md-card-actions>
+  </md-card>
+</div>

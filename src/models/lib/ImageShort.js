@@ -19,12 +19,12 @@ export default class ImageShort extends AbstractModel {
     return `${this.url},${this.version || 0}`
   }
 
-  static fromServer (data) {
+  static fromJS (data) {
     return data == null ? null : new ImageShort({
       format: data.format,
       width: data.width,
       height: data.height,
-      url: data.url,
+      url: data.secure_url,
       version: data.version
     })
   }
