@@ -1,0 +1,17 @@
+<div class="root page-projects">
+  <div class="top">
+    <md-toolbar class="md-transparent md-theme-inversed">
+      <h2 class="md-title" style="flex: 1">Pojects</h2>
+      <span class="toolbar-wide">
+        <md-button class="md-primary" @click="$router.push('/private')">
+          Create New
+        </md-button>
+      </span>
+    </md-toolbar>
+  </div>
+  <div class="middle">
+    <div class="content">
+      <router-view />
+    </div>
+  </div>
+</div>

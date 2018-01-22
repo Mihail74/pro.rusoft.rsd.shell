@@ -1,0 +1,65 @@
+<div class="root signup-page">
+  <div class="outer">
+    <div class="inner">
+      <form novalidate @submit.prevent="$v.$touch(); !$v.$invalid && signup()">
+        <md-layout md-column md-gutter="16">
+          <md-layout :md-flex="false" md-align="center" class="logo">
+            <div class="logo-image"></div>
+          </md-layout>
+          <md-layout :md-flex="false" md-align="center">
+            <div>
+              <div class="md-display-1">Sign up to Obsidian</div>
+              <div class="md-subheading">Enter your details below</div>
+            </div>
+          </md-layout>
+          <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
+            <md-input-container :class="{
+              'md-input-invalid': $v.name.$error
+            }">
+              <label>Full Name</label>
+              <md-input v-model="name" @input="$v.name.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.name.$error && !$v.name.required" class="md-error">Name is a required field</span>
+            </md-input-container>
+            <md-input-container :class="{
+              'md-input-invalid': $v.email.$error
+            }">
+              <label>Email</label>
+              <md-input v-model="email" @input="$v.email.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.email.$error && !$v.email.required" class="md-error">Email is a required field</span>
+              <span v-if="$v.email.$error && !$v.email.email" class="md-error">Invalid email address</span>
+            </md-input-container>
+            <md-input-container md-has-password :class="{
+              'md-input-invalid': $v.password.$error
+            }">
+              <label>Password</label>
+              <md-input type="password" v-model="password" @input="$v.password.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.password.$error && !$v.password.required" class="md-error">Password is a required field</span>
+            </md-input-container>
+            <md-input-container md-has-password :class="{
+              'md-input-invalid': $v.passwordConfirmation.$error
+            }">
+              <label>Password Confirmation</label>
+              <md-input type="password" v-model="passwordConfirmation" @input="$v.passwordConfirmation.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.required" class="md-error">Password confirmation is a required field</span>
+              <span v-else-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.sameAsPassword" class="md-error">Confirmation should be equal to Password field</span>
+            </md-input-container>
+            <div class="warning" v-if="error">
+              <md-icon class="md-warn status">warning</md-icon>
+              <span v-if="alreadyExistUserError">User already exist</span>
+              <span v-else="">{{ error }}</span>
+            </div>
+            <div>
+              <md-button type="submit" class="md-raised md-primary">Register</md-button>
+            </div>
+          </md-layout>
+          <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
+            <div>
+              <span class="md-body-2">Already have an account?</span>
+              <a href="/signin">Sign in</a>
+            </div>
+          </md-layout>
+        </md-layout>
+      </form>
+    </div>
+  </div>
+</div>

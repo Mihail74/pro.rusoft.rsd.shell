@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="576px" height="576px" viewBox="0 0 576 576" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>cloud icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" gradientTransform="translate(0.500000,0.500000),rotate(90.000000),scale(1.000000,0.982531),translate(-0.500000,-0.500000)" id="radialGradient-1">
+            <stop stop-color="#0F2B4C" offset="0%"></stop>
+            <stop stop-color="#0F2B4C" offset="23.7922513%"></stop>
+            <stop stop-color="#0F2B4C" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#196F99" offset="0%"></stop>
+            <stop stop-color="#133864" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="55.4868437%" cy="58.818157%" fx="55.4868437%" fy="58.818157%" r="82.8757466%" id="radialGradient-3">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="53.5954038%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="44.5181576%" cy="54.9839071%" fx="44.5181576%" fy="54.9839071%" r="89.8206257%" id="radialGradient-4">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="53.5954038%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="50%" y1="15.6701219%" x2="50%" y2="95.6519627%" id="linearGradient-5">
+            <stop stop-color="#2EB3DF" offset="0%"></stop>
+            <stop stop-color="#1D4F8E" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cloud-icon">
+            <g id="Group" transform="translate(56.000000, 56.000000)">
+                <circle id="Oval-8" fill="url(#radialGradient-1)" cx="232" cy="232" r="232"></circle>
+                <path d="M151.128791,282.879857 C127.861702,282.879857 109,264.018155 109,240.751066 C109,217.483977 127.861702,198.622274 151.128791,198.622274 C151.460088,198.622274 151.790492,198.626099 152.119961,198.633705 C152.112355,198.304236 152.108531,197.973832 152.108531,197.642535 C152.108531,174.375446 170.970233,155.513744 194.237322,155.513744 C198.750587,155.513744 203.098091,156.22345 207.174323,157.53735 C219.273237,141.996517 238.159165,132 259.379904,132 C295.898254,132 325.502226,161.603972 325.502226,198.122322 C325.502226,206.079399 324.096713,213.708201 321.520409,220.774006 C334.878191,224.473912 344.684522,236.719089 344.684522,251.254657 C344.684522,268.720773 330.525437,282.879857 313.059322,282.879857 C312.998474,282.879857 259.021631,282.879857 151.128791,282.879857 Z" id="Combined-Shape" fill="url(#linearGradient-2)" transform="translate(226.842261, 207.439928) scale(-1, 1) translate(-226.842261, -207.439928) "></path>
+                <circle id="Oval" fill="url(#radialGradient-3)" style="mix-blend-mode: overlay;" cx="194" cy="198" r="63"></circle>
+                <circle id="Oval" fill="url(#radialGradient-4)" style="mix-blend-mode: overlay;" cx="258.5" cy="198.5" r="41.5"></circle>
+                <polygon id="Combined-Shape" fill="url(#linearGradient-5)" points="252 316 202 316 202 228 178 228 227 179 276 228 252 228"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

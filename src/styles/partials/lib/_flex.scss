@@ -1,0 +1,12 @@
+@mixin flex-row($item: '.info-item') {
+  display: flex;
+  width: auto;
+  position: relative;
+  box-sizing: border-box;
+  align-items: center;
+
+  >#{$item} {
+    flex: 0 0 auto;
+    position: relative;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="root recover-page">
+  <div class="outer">
+    <div class="inner">
+      <div class="message">
+        <md-layout md-column md-gutter="16">
+          <md-layout :md-flex="false" md-align="center" class="logo">
+            <div class="logo-image"></div>
+          </md-layout>
+          <md-layout :md-flex="false" md-align="center">
+            <div>
+              <div class="md-display-1">Password Recovery</div>
+              <div class="md-subheading">
+                <div v-if="$route.params.check">Checking {{$route.params.check}}</div>
+                <div v-else>We have sent you a reset email. Please follow the link from the message.</div>
+              </div>
+            </div>
+            <div class="error" v-if="error">{{ error }}</div>
+          </md-layout>
+          <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
+            <div>
+              <span class="md-body-2">Remember password?</span>
+              <a href="/signin">Sign in</a>
+            </div>
+          </md-layout>
+        </md-layout>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+@import '~@/styles/partials/mixins';
+@import '~@/styles/partials/variables';
+
+.root.private-page {
+  @include dock-column();
+  @include position(absolute, auto, auto, auto, auto, 100%, 100%);
+  // flex-wrap: wrap;
+
+  .top {
+    &.secondary {
+      background: #FFFFFF;
+    }
+
+    .md-button {
+      color: #FFFFFF;
+      &.greyed {
+        color: rgba(#FFFFFF, 0.54);
+      }
+    }
+  }
+
+  .middle {
+    @include scrollable();
+  }
+}

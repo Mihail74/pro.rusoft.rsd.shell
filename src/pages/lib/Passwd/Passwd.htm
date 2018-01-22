@@ -1,0 +1,46 @@
+<div class="root passwd-page">
+  <div class="outer">
+    <div class="inner">
+      <form novalidate @submit.prevent="$v.$touch(); !$v.$invalid && passwd()">
+        <md-layout md-column md-gutter="16">
+          <md-layout :md-flex="false" md-align="center" class="logo">
+            <div class="logo-image"></div>
+          </md-layout>
+          <md-layout :md-flex="false" md-align="center">
+            <div>
+              <div class="md-display-1">Password Recovery</div>
+              <div class="md-subheading">Specify your new password</div>
+            </div>
+          </md-layout>
+          <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
+            <md-input-container md-has-password :class="{
+              'md-input-invalid': $v.password.$error
+            }">
+              <label>Password</label>
+              <md-input type="password" v-model="password" @input="$v.password.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.password.$error && !$v.password.required" class="md-error">Password is a required field</span>
+            </md-input-container>
+            <md-input-container md-has-password :class="{
+              'md-input-invalid': $v.passwordConfirmation.$error
+            }">
+              <label>Password Confirmation</label>
+              <md-input type="password" v-model="passwordConfirmation" @input="$v.passwordConfirmation.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.required" class="md-error">Password confirmation is a required field</span>
+              <span v-else-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.sameAsPassword" class="md-error">Confirmation should be equal to Password field</span>
+            </md-input-container>
+            <div class="error" v-if="error">{{ error }}</div>
+            <div>
+              <md-button type="submit" class="md-raised md-primary">Update</md-button>
+            </div>
+          </md-layout>
+          <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
+            <div>
+              <span class="md-body-2">Not now? You are already signed in.</span>
+              <a href="/private">Continue</a>
+            </div>
+          </md-layout>
+        </md-layout>
+      </form>
+    </div>
+  </div>
+</div>

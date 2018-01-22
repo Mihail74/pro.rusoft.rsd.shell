@@ -1,0 +1,50 @@
+@mixin dock-column($top: 'top', $middle: 'middle', $bottom: 'bottom') {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  >.#{$top} {
+    flex: 0 0 auto;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  >.#{$middle} {
+    flex: 1 1 auto;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  >.#{$bottom} {
+    flex: 0 0 auto;
+    position: relative;
+    box-sizing: border-box;
+  }
+}
+
+@mixin dock-row($left: 'left', $content: 'center', $right: 'right') {
+
+  display: flex;
+  flex-wrap: nowrap;
+
+  >.#{$left} {
+    flex: 0 0 auto;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  >.#{$content} {
+    flex: 1 1 auto;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  >.#{$right} {
+    flex: 0 0 auto;
+    position: relative;
+    box-sizing: border-box;
+  }
+}

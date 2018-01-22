@@ -1,0 +1,12 @@
+@import "~@/styles/partials/variables";
+@import '~material-colors-scss/function';
+
+@mixin scrollable($thumb-background: #{material-color('cyan', '700')}, $track-background: rgba(0,0,0,0.2), $corner-background: transparent) {
+
+  overflow: auto;
+
+  &::-webkit-scrollbar { width: 8px; height: 8px; margin: 5px; }
+  &::-webkit-scrollbar-thumb { background: $thumb-background; border-radius: 20px; }
+  &::-webkit-scrollbar-track { background: $track-background; border-radius: 20px; }
+  &::-webkit-scrollbar-corner { background: $corner-background; }
+}

@@ -1,0 +1,14 @@
+@mixin shell-modal($width: auto, $height: auto) {
+
+  background: #FFFFFF;
+  border-radius: 3px;
+
+  width: $width;
+  height: $height;
+  overflow: hidden;
+
+  flex: 0 0 auto;
+
+  max-height: 90%;
+  max-width: 90%;
+}

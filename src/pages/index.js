@@ -1,0 +1,8 @@
+export { default as SignIn } from './lib/SignIn/SignIn.vue'
+export { default as SignUp } from './lib/SignUp/SignUp.vue'
+export { default as Confirm } from './lib/Confirm/Confirm.vue'
+export { default as Forgot } from './lib/Forgot/Forgot.vue'
+export { default as Recover } from './lib/Recover/Recover.vue'
+export { default as Passwd } from './lib/Passwd/Passwd.vue'
+export { default as Private } from './lib/Private/Private.vue'
+export { default as Projects } from './lib/Projects/Projects.vue'

@@ -1,0 +1,23 @@
+@mixin when-width-gte($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin when-width-lte($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin when-height-gte($height) {
+  @media only screen and (min-height: $height) {
+    @content;
+  }
+}
+
+@mixin when-height-lte($height) {
+  @media only screen and (max-height: $height) {
+    @content;
+  }
+}

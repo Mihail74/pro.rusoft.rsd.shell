@@ -1,0 +1,29 @@
+@mixin with-component-table(
+  $table: '.table',
+  $table-head: '.table-head',
+  $table-body: '.table-body',
+  $table-foot: '.table-foot',
+  $table-row: '.table-row',
+  $table-cell: '.table-cell'
+) {
+  #{$table} {
+    position: relative;
+    width: 100%;
+    > #{$table-head},
+    > #{$table-foot},
+    > #{$table-body} {
+      position: relative;
+      > #{$table-row} {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        > #{$table-cell} {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+}

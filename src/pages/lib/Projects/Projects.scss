@@ -1,0 +1,43 @@
+@import '~@/styles/partials/mixins';
+@import '~@/styles/partials/variables';
+
+.root.page-projects {
+  @include splash();
+  @include dock-column();
+
+  .top {
+    background-color: #FFFFFF;
+  }
+
+  .middle {
+    @include scrollable();
+
+    .content {
+      margin: 32px auto;
+      max-width: 1200px;
+
+      .section-navigator {
+        @include flex-row(\.item)
+        align-items: center;
+        .item {
+          &.item-tabs {
+            @include with-component-tabs()
+          }
+          &.item-mode {
+            @include with-component-tabs-icons()
+            margin-left: 32px;
+          }
+          &.item-search {
+            flex: 1 1 auto;
+            .md-input-container {
+              font-weight: normal;
+              &:after {
+                background: transparent;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

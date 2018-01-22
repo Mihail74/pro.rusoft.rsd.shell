@@ -1,0 +1,7 @@
+{
+  "frontend": {
+    "api": {
+      "url": "http://backend.rsd.tp.ntr1x.com/api/v1"
+    }
+  }
+}
