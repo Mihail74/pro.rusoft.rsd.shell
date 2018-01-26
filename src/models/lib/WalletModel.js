@@ -1,11 +1,12 @@
 import Joi from 'joi'
 import AbstractModel from './AbstractModel'
-import ProjectShort from './ProjectShort'
-import TransferDepositModel from './TransferDepositModel'
+import WalletShort from './WalletShort'
+import TransferModel from './TransferModel'
 
 export const schema = () => ({
-  descriptor: Joi.object().type(ProjectShort),
-  deposites: Joi.array(Joi.object().type(TransferDepositModel))
+  descriptor: Joi.object().type(WalletShort),
+  incoming: Joi.array(Joi.object().type(TransferModel)),
+  outgoing: Joi.array(Joi.object().type(TransferModel))
 })
 
 export default class ProjectModel extends AbstractModel {
@@ -21,8 +22,7 @@ export default class ProjectModel extends AbstractModel {
   static fromJS (data, context = {}) {
     return data == null ? null : new ProjectModel(project => ({
       ...data,
-      descriptor: ProjectShort.fromJS(data.descriptor, { ...context }),
-      deposites: AbstractModel.buildArray(data.deposites, TransferDepositModel.fromJS, { ...context, project })
+      descriptor: WalletShort.fromJS(data, { ...context })
     }))
   }
 }
