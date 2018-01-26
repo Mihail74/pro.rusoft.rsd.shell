@@ -5,6 +5,7 @@ import ProjectShort from './ProjectShort'
 import UserShort from './UserShort'
 
 export const schema = () => ({
+  id: Joi.string().required(),
   transfer: Joi.object().type(TransferShort),
   project: Joi.object().type(ProjectShort),
   user: Joi.object().type(UserShort)
@@ -20,10 +21,10 @@ export default class TransferDepositModel extends AbstractModel {
     return data == null ? null : new TransferDepositModel(transferDeposit => ({
       ...data,
       user: context.user
-        ? context.user.descriptor
+        ? context.user
         : UserShort.fromJS(data.user, { ...context }),
       project: context.project
-        ? context.project.descriptor
+        ? context.project
         : ProjectShort.fromJS(data.project, { ...context }),
       transfer: TransferShort.fromJS(data, { ...context })
     }))

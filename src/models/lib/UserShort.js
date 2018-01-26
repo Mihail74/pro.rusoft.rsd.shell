@@ -9,7 +9,7 @@ export const schema = {
   avatar: Joi.object().type(ImageShort).allow(null)
 }
 
-export default class UserModel extends AbstractModel {
+export default class UserShort extends AbstractModel {
   constructor (data) {
     super(data, schema)
     Object.freeze(this)
@@ -22,7 +22,7 @@ export default class UserModel extends AbstractModel {
   }
 
   static fromJS (data) {
-    return data == null ? null : new UserModel({
+    return data == null ? null : new UserShort({
       ...data,
       avatar: ImageShort.fromJS(data.avatar)
     })

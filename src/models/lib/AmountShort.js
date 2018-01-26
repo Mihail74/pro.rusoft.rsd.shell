@@ -13,4 +13,12 @@ export default class AmountShort extends AbstractModel {
     super(data, schema)
     Object.freeze(this)
   }
+
+  static fromJS (data, context = {}) {
+    console.log('amount', data)
+    return data == null ? null : new AmountShort({
+      token: TokenShort.valueOf(data.token),
+      value: new BigNumber(data.value)
+    })
+  }
 }

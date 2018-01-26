@@ -44,6 +44,10 @@ export default ({ store }) => {
               { path: '', redirect: 'dashboard' },
               { path: 'dashboard', component: partials.ProjectsDashboard }
             ]
+          },
+          {
+            path: 'profiles/i/:profileId',
+            component: pages.Profile
           }
         ]
       }

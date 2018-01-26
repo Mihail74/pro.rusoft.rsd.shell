@@ -6,7 +6,7 @@ export const schema = () => ({
   blockchain: Joi.string().required(),
   name: Joi.string().required(),
   symbol: Joi.string().required(),
-  decimals: Joi.number({ min: 0, max: 32 })
+  decimals: Joi.number().min(0).max(32)
 })
 
 export default class TokenShort extends AbstractModel {
@@ -23,15 +23,15 @@ export default class TokenShort extends AbstractModel {
     return new BigNumber(10).pow(this.decimals)
   }
 
-  readPennies (value): BigNumber {
+  readPennies (value: String | Number): BigNumber {
     return new BigNumber(value)
   }
 
-  readAmount (value): BigNumber {
+  readAmount (value: String | Number): BigNumber {
     return this.readPennies(value).div(this.digits)
   }
 
-  static valueOf (fullName) {
+  static valueOf (fullName: String) {
     switch (fullName) {
       case tRSD.id: return tRSD
       case tBTC.id: return tBTC

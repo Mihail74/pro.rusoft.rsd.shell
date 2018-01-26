@@ -19,7 +19,7 @@ export default class WalletShort extends AbstractModel {
   static fromJS (data, context = {}) {
     return data == null ? null : new WalletShort(wallet => ({
       ...data,
-      user: UserShort.fromJS(data.user),
+      user: context.user ? context.user : UserShort.fromJS(data.user),
       createdDate: new Date(data.createdDate)
     }))
   }
