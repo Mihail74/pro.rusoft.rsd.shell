@@ -1,3 +1,56 @@
-.root.partials-profile-details {
+@import '~@/styles/partials/mixins';
 
+.root.partials-profile-details {
+  @include flex(column, flex-start, center);
+  .bio {
+    .md-card-header {
+      @include flex(row, flex-start, flex-start);
+      .md-card-header-text {
+        margin-left: 20px;
+        max-width: 40%;
+        .md-title {
+          margin-top: 0;
+        }
+      }
+      .md-switch {
+        margin-top: 0;
+        margin-left: auto;
+      }
+    }
+  }
+  .wallets {
+    .wallet {
+      @include flex(row, space-between, flex-start);
+    }
+    .caption {
+      max-width: 50%;
+    }
+  }
+  .transfer {
+    @include flex(row, space-between, flex-start);
+    .md-card-content {
+      max-width: 50%;
+      .caption {
+        margin-top: 10px;
+      }
+    }
+    .controls {
+      @include flex(column, flex-start, flex-end);
+      min-width: 40%;
+      .md-button {
+        margin-right: 0;
+      }
+    }
+  }
+  .projects {
+    .md-card-header {
+      @include flex(column, flex-start, flex-start);
+    }
+  }
+}
+
+.md-card {
+  width: 80%;
+  max-width: 800px;
+  margin-top: 20px;
 }

@@ -1,3 +1,91 @@
 <div class="root partials-profile-details">
-  <pre>{{ profile }}</pre>
+  <md-card class="bio">
+    <md-card-header>
+      <md-card-media>
+        <img :src="profile.descriptor.avatar.url">
+      </md-card-media>
+      <md-card-header-text>
+        <div class="md-title">{{ profile.descriptor.name }}</div>
+        <div class="md-caption">Данные инвестора становятся доступны другим участникам в случае, если инвестор открыл свой профиль (переключатель справа сверху)</div>
+      </md-card-header-text>
+      <md-switch class="md-primary"></md-switch>
+    </md-card-header>
+  </md-card>
+  <md-card class="wallets">
+    <md-card-content class="wallet">
+      <div>
+        <div>
+          Инвестиционный счёт *
+        </div>
+        <div class="md-body-2">
+          {{ profile.investingWallet.address }}
+        </div>
+      </div>
+      <div>
+        <div>balance RSD</div>
+        <div>~balance RUR</div>
+      </div>
+      <md-button class="md-raised md-primary">Приобрести RSD</md-button>
+    </md-card-content>
+    <md-card-content class="wallet">
+      <div>
+        <div>Личный счёт</div>
+        <div class="md-body-2">{{ profile.personalWallet.address }}</div>
+      </div>
+      <div>
+        <div>balance RSD</div>
+        <div>~balance RUR</div>
+      </div>
+      <md-button class="md-raised md-primary">Инвестировать</md-button>
+    </md-card-content>
+    <md-card-content class="caption">
+      <div class="md-caption">* Чтобы получить в свое распоряжение средства инвестиционного счета вы должны поддержать какой-либо проект</div>
+    </md-card-content>
+  </md-card>
+  <md-card class="transfer">
+    <md-card-content>
+      <div class="md-title">Перевод</div>
+      <div class="md-caption caption">Выберите сумму и валюту для перевода средств на другой счет. Вы можете распоряжаться всей суммой вашего личного счёта</div>
+      <div class="md-caption caption">Используйте данную форму для оплаты услуг или продажи RSD проектам площадки во время процедуры обратного выкупа долга.</div>
+      <div class="md-caption caption">Не забывайте, что RSD - отличный инвестиционный инструмент, и вы можете сохранять RSD-токены на вашем счете столько</div>
+    </md-card-content>
+    <md-card-content class="controls">
+      <md-input-container>
+        <label for="currency">Валюта перевода</label>
+        <md-select name="currency" id="currency" v-model="currency">
+          <md-option value="rsd">RSD</md-option>
+          <md-option value="rur">RUR</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Получатель перевода</label>
+        <md-input v-model="recipient">
+        </md-input>
+      </md-input-container>
+      <md-input-container>
+          <label>Сумма перевода</label>
+          <md-input v-model="transferAmount"></md-input>
+      </md-input-container>
+      <md-button class="md-raised md-primary">Перевести</md-button>
+    </md-card-content>
+  </md-card>
+  <md-card class="projects">
+    <md-card-header>
+      <md-card-header-text>
+        <div class="md-title">Список проектов</div>
+        <div class="md-subtitle md-caption">Когда проекты стартуют, вы получаете на личные счета всю сумму, которую перевели на целевой депозит проекта. И далее вы свободно можете распоряжаться этой суммой.</div>
+      </md-card-header-text>
+    </md-card-header>
+    <md-tabs md-fixed>
+      <md-tab id="owned" md-label="Личные">
+        <projects-list :projects="profile.projects" />
+      </md-tab>
+      <md-tab id="deposited" md-label="Поддержанные">
+        <projects-list :projects="profile.deposites" />
+      </md-tab>
+      <md-tab id="withdrawn" md-label="Стартовавшие">
+        <projects-list :projects="profile.withdrawals" />
+      </md-tab>
+    </md-tabs>
+  </md-card>
 </div>

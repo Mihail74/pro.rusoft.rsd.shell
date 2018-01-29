@@ -1,0 +1,23 @@
+<div class="root partials-profile-details-projects-list">
+  <md-card-area class="projects-list">
+    <md-card class="project-card" v-for="project in projects" :key="project.id">
+      <md-card-media class="thumbnail">
+        <img :src="project.thumbnail.url">
+      </md-card-media>
+      <md-card-content class="description">
+        <div class="md-title">{{ project.name }}</div>
+        <div class="md-subtitle">{{ project.description }}</div>
+      </md-card-content>
+      <md-card-content class="charts-block">
+          <chart class="chart"
+          type="doughnut"
+          :config="currentAmount()"
+        />
+        <chart class="chart"
+        type="doughnut"
+        :config="currentAmount()"
+      />
+      </md-card-content>
+    </md-card>
+  </md-card-area>
+</div>

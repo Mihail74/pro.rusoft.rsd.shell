@@ -1,0 +1,31 @@
+@import '~@/styles/partials/mixins';
+
+.root.partials-profile-details-projects-list {
+  .projects-list {
+    @include flex(column, flex-start, center);
+    padding-bottom: 20px;
+    .project-card {
+      @include flex(row, flex-start, stretch);
+      margin-top: 20px;
+      width: 95%;
+      .thumbnail {
+        flex: 0 0 150px;
+        img {
+          object-fit: cover;
+          height: 100%;
+        }
+      }
+      .description {
+        max-width: 50%;
+      }
+      .charts-block {
+        @include flex(row, space-between, center);
+        margin-left: auto;
+        .chart {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
