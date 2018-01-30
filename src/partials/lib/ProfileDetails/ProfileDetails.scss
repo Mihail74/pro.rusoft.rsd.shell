@@ -2,6 +2,7 @@
 
 .root.partials-profile-details {
   @include flex(column, flex-start, center);
+  margin-bottom: 300px;
   .bio {
     .md-card-header {
       @include flex(row, flex-start, flex-start);
@@ -12,9 +13,13 @@
           margin-top: 0;
         }
       }
-      .md-switch {
-        margin-top: 0;
+      .switch {
+        @include flex(row, flex-start, flex-start);
         margin-left: auto;
+        .md-switch {
+          margin-top: 0;
+          margin-left: 10px;
+        }
       }
     }
   }

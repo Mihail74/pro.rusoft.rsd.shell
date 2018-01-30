@@ -4,6 +4,7 @@
   .projects-list {
     @include flex(column, flex-start, center);
     padding-bottom: 20px;
+    min-height: 300px;
     .project-card {
       @include flex(row, flex-start, stretch);
       margin-top: 20px;
@@ -22,9 +23,18 @@
         @include flex(row, space-between, center);
         margin-left: auto;
         .chart {
-          width: 100px;
-          height: 100px;
+            width: 100px;
+            height: 100px;
         }
+      }
+    }
+    .empty-state {
+      @include flex(column, flex-start, center);
+      margin-top: auto;
+      img {
+        margin-top: 40px;
+        max-width: 150px;
+        max-height: 150px;
       }
     }
   }

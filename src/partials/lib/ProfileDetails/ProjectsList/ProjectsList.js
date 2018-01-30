@@ -11,14 +11,15 @@ export default {
 
   methods: {
     currentAmount () {
+      const value = Math.trunc(Math.random() * 100)
       return {
         data: {
           labels: ['Собрано', 'Осталось'],
           datasets: [{
             label: 'Цель',
-            data: [100, 500],
-            borderWidth: 1,
-            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)']
+            data: [value, 100 - value],
+            borderWidth: [0, 3],
+            backgroundColor: ['#2196f3', '#f44336']
           }]
         },
         options: {
@@ -29,7 +30,13 @@ export default {
             display: false
           },
           title: {
-            display: true
+            display: false
+          },
+          layout: {
+            padding: 5
+          },
+          tooltips: {
+            titleFontSize: 10
           }
         }
       }

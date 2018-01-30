@@ -1,5 +1,9 @@
 <div class="root partials-profile-details-projects-list">
   <md-card-area class="projects-list">
+    <div class="empty-state" v-if="projects.length==0">
+      <div class="md-display-1">Проектов пока ещё нет</div>
+      <img src="/static/emptyset.svg">
+    </div>
     <md-card class="project-card" v-for="project in projects" :key="project.id">
       <md-card-media class="thumbnail">
         <img :src="project.thumbnail.url">
