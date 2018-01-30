@@ -13,14 +13,16 @@
         <div class="md-subtitle">{{ project.description }}</div>
       </md-card-content>
       <md-card-content class="charts-block">
-          <chart class="chart"
+        <chart class="chart"
           type="doughnut"
           :config="currentAmount()"
+          label="10 RSD"
         />
         <chart class="chart"
         type="doughnut"
         :config="currentAmount()"
-      />
+        label="90 дней"
+        />
       </md-card-content>
     </md-card>
   </md-card-area>

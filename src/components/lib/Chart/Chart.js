@@ -3,7 +3,8 @@ import Chart from 'chart.js'
 export default {
   props: {
     type: String,
-    config: [Object, Function]
+    config: [Object, Function],
+    label: String
   },
   mounted () {
     const context = this.$refs.canvas.getContext('2d')
