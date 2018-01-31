@@ -84,10 +84,10 @@
         <projects-list :projects="profile.projects" />
       </md-tab>
       <md-tab id="deposited" md-label="Поддержанные">
-        <projects-list :projects="profile.deposites" />
+        <projects-list :projects="profile.deposites.map(p => p.project)" />
       </md-tab>
       <md-tab id="withdrawn" md-label="Стартовавшие">
-        <projects-list :projects="profile.withdrawals" />
+        <projects-list :projects="profile.withdrawals.map(p => p.project)" />
       </md-tab>
     </md-tabs>
   </md-card>

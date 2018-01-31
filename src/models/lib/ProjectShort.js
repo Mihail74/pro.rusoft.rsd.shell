@@ -10,7 +10,9 @@ export const schema = () => ({
   thumbnail: Joi.object().type(ImageShort).allow(null),
   owner: Joi.object().type(UserShort).required(),
   createdDate: Joi.object().type(Date),
-  members: Joi.array().items(Joi.object().type(UserShort)).allow(null)
+  members: Joi.array().items(Joi.object().type(UserShort)).allow(null),
+  totalDeposites: Joi.number(),
+  totalWithdrawals: Joi.number()
 })
 
 export default class ProjectShort extends AbstractModel {
