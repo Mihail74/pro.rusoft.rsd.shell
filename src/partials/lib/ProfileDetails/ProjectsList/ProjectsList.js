@@ -19,7 +19,7 @@ export default {
             label: 'Цель',
             data: [value, 100 - value],
             borderWidth: [0, 3],
-            backgroundColor: ['#2196f3', '#f44336']
+            backgroundColor: ['#2196f3']
           }]
         },
         options: {

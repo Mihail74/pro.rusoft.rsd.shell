@@ -5,6 +5,7 @@ import ProjectShort from './ProjectShort'
 import UserShort from './UserShort'
 
 export const schema = () => ({
+  id: Joi.string().required(),
   transfer: Joi.object().type(TransferShort),
   project: Joi.object().type(ProjectShort),
   user: Joi.object().type(UserShort)
