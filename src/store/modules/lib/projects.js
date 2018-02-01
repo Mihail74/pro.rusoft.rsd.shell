@@ -8,7 +8,7 @@ export const PROJECT_DETAILS_LOADING = 'projects/details/load'
 export const PROJECT_DETAILS_LOADED = 'projects/details/loaded'
 export const PROJECT_DETAILS_REMOVED = 'projects/details/removed'
 
-export default {
+export default (applicationContext) => ({
   namespaced: true,
   state: {
     list: new LoadableListModel(ProjectShort),
@@ -53,4 +53,4 @@ export default {
       commit(PROJECT_DETAILS_LOADED, ProjectModel.fromJS(project))
     }
   }
-}
+})

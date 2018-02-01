@@ -2,7 +2,7 @@ import { BACKEND, withAuthorization } from 'src/remotes'
 
 export const PRINCIPAL_SWITCH = 'principal/switch'
 
-export default {
+export default (applicationContext) => ({
   namespaced: true,
   state: {
     principal: null
@@ -58,4 +58,4 @@ export default {
       // commit(`ople/${JOBS_LOAD}`, [], { root: true })
     }
   }
-}
+})

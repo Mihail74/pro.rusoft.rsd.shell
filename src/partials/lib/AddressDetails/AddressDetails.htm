@@ -1,0 +1,31 @@
+<div class="root partials-address-details">
+  <md-card class="address">
+    <md-card-header>
+      <md-card-header-text>
+        <div class="md-title">{{ addressDetails.address }}</div>
+      </md-card-header-text>
+    </md-card-header>
+
+    <md-card-content>
+      <div>
+        <div>
+          <span class="md-body-2">
+            Баланс:
+          </span>
+          <span>
+            {{ balance }} satoshi
+          </span>
+        </div>
+
+        <div v-if="unconfirmedBalance !== 0">
+          <span class="md-body-2">
+            Предстоящие изменения:
+          </span>
+          <span>
+            {{ unconfirmedBalance }} satoshi
+          </span>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>
