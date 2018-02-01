@@ -1,1 +1,7 @@
-export { default as WebSocketService } from './lib/WebSocketService'
+import WebSocketService from './lib/WebSocketService'
+
+export default (applicationContext) => {
+  return {
+    webSocketService: new WebSocketService(applicationContext)
+  }
+}

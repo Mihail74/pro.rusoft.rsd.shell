@@ -2,27 +2,27 @@
   <md-card class="address">
     <md-card-header>
       <md-card-header-text>
-        <div class="md-title">{{ addressDetails.address }}</div>
+        <div class="md-title">{{ address }}</div>
       </md-card-header-text>
     </md-card-header>
 
-    <md-card-content>
+    <md-card-content v-if="addressLoadableModel.isLoaded">
       <div>
         <div>
           <span class="md-body-2">
             Баланс:
           </span>
           <span>
-            {{ balance }} satoshi
+            {{ addressDetails.balance.toNumber() }} satoshi
           </span>
         </div>
 
-        <div v-if="unconfirmedBalance !== 0">
+        <div v-if="addressDetails.unconfirmedBalance.toNumber() !== 0">
           <span class="md-body-2">
             Предстоящие изменения:
           </span>
           <span>
-            {{ unconfirmedBalance }} satoshi
+            {{ addressDetails.unconfirmedBalance.toNumber() }} satoshi
           </span>
         </div>
       </div>

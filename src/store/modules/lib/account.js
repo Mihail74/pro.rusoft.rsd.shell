@@ -2,7 +2,7 @@ import { BACKEND, withAuthorization } from 'src/remotes'
 
 export const PRINCIPAL_SWITCH = 'principal/switch'
 
-export default (applicationContext) => ({
+export default (settings) => ({
   namespaced: true,
   state: {
     principal: null

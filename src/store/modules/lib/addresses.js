@@ -5,7 +5,7 @@ export const ADDRESS_DETAILS_LOADING = 'addresses/details/load'
 export const ADDRESS_DETAILS_LOADED = 'addresses/details/loaded'
 export const ADDRESS_DETAILS_REMOVED = 'addresses/details/removed'
 
-export default ({ webSocketService }) => ({
+export default (settings) => ({
   namespaced: true,
   state: {
     table: new LoadableMapModel(AddressModel),
@@ -27,28 +27,7 @@ export default ({ webSocketService }) => ({
   actions: {
     async fetchAddressDetails ({ state, commit, rootState, dispatch }, address) {
       const { data } = await BACKEND.get(`address/${address}`, withAuthorization(rootState.account.principal.token))
-
-      await dispatch('subscribeOnAddress', address)
-
       return data
-    },
-
-    subscribeOnAddress ({ state, commit, rootState }, address) {
-      if (!state.subscribers[address]) {
-        const subscriber = webSocketService.subscribe('addresses', address, addressDetails => {
-          commit(ADDRESS_DETAILS_LOADED, AddressModel.fromJS(JSON.parse(addressDetails)))
-        })
-
-        state.subscribers[address] = subscriber
-      }
-    },
-
-    async unsubscribeFromAddress ({ state, commit, rootState }, address) {
-      if (state.subscribers[address]) {
-        const subsriber = state.subscribers[address]
-        subsriber.unsubscribe()
-        delete state.subscribers[address]
-      }
     },
 
     async loadAddressDetails ({ state, commit, dispatch }, address) {

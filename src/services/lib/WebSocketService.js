@@ -2,7 +2,7 @@ import Stomp from 'stompjs'
 import { WS } from 'src/remotes'
 
 export default class WebSocketService {
-  constructor () {
+  constructor (applicationContext) {
     this.isConnected = false
 
     // key -> { server: {id, unsubscribe}, clients: {id, Subscriber}}

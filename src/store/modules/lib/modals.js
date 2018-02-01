@@ -3,7 +3,7 @@ import uniqid from 'uniqid'
 export const MODALS_OPEN = 'modals/open'
 export const MODALS_CLOSE = 'modals/close'
 
-export default (applicationContext) => ({
+export default (settings) => ({
   namespaced: true,
   state: {
     stack: []
