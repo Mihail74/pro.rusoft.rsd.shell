@@ -27,5 +27,18 @@
         </div>
       </div>
     </md-card-content>
+    <md-input-container>
+      <label>Адрес</label>
+      <md-input v-model="toAddress"></md-input>
+    </md-input-container>
+    <md-input-container>
+      <label>Value</label>
+      <md-input type="number" v-model="value"></md-input>
+    </md-input-container>
+    <md-input-container>
+      <label>mnemonic key</label>
+      <md-input v-model="mnemonic"></md-input>
+    </md-input-container>
+    <md-button class="md-raised md-primary" @click="send">Перечислить</md-button>
   </md-card>
 </div>

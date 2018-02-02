@@ -6,10 +6,13 @@ export default {
   props: {
     address: String
   },
-  inject: ['webSocketService'],
+  inject: ['webSocketService', 'transactionSender'],
   data () {
     return {
-      subscriber: null
+      subscriber: null,
+      mnemonic: null,
+      toAddress: null,
+      value: null
     }
   },
   async created () {
@@ -38,6 +41,14 @@ export default {
     }),
     ...mapMutations({
       updateStore: `addresses/${ADDRESS_DETAILS_LOADED}`
-    })
+    }),
+    send () {
+      this.transactionSender.sendTransaction({
+        fromAddress: this.address,
+        toAddress: this.toAddress,
+        mnemonic: this.mnemonic,
+        value: Number(this.value)
+      })
+    }
   }
 }
