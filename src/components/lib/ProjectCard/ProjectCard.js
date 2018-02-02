@@ -1,5 +1,6 @@
-import { ProjectShort } from 'src/models'
+import { ProjectShort, DialogModel } from 'src/models'
 import Chart from '../Chart/Chart.vue'
+import { SupportProject } from 'src/modals'
 
 export default {
   components: {
@@ -24,7 +25,15 @@ export default {
   },
   methods: {
     timeChartFactory,
-    valueChartFactory
+    valueChartFactory,
+    support (project) {
+      this.$store.dispatch('modals/open', new DialogModel({
+        factory: () => SupportProject,
+        data: {
+          project
+        }
+      }))
+    }
   }
 }
 

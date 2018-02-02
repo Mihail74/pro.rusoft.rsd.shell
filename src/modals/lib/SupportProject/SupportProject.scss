@@ -1,0 +1,11 @@
+@import '~@/styles/partials/mixins';
+@import '~@/styles/partials/variables';
+
+.root.modal-support-project {
+  @include shell-modal();
+  min-width: 512px;
+  .md-button {
+    margin: 0;
+    float: right;
+  }
+}

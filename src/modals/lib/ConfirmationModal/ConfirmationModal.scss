@@ -1,0 +1,5 @@
+@import '~@/styles/partials/mixins';
+
+.root.modal-confirmation-modal {
+  @include shell-modal();
+}
