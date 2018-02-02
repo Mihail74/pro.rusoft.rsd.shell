@@ -5,7 +5,7 @@ export const PROFILE_DETAILS_LOADING = 'profiles/details/load'
 export const PROFILE_DETAILS_LOADED = 'profiles/details/loaded'
 export const PROFILE_DETAILS_REMOVED = 'profiles/details/removed'
 
-export default {
+export default (settings) => ({
   namespaced: true,
   state: {
     table: new LoadableMapModel(UserModel)
@@ -34,4 +34,4 @@ export default {
       commit(PROFILE_DETAILS_LOADED, UserModel.fromJS(project))
     }
   }
-}
+})

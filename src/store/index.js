@@ -8,7 +8,9 @@ import * as modules from './modules'
 Vue.use(Vuex)
 
 export default () => new Vuex.Store({
-  modules,
+  modules: Object.entries(modules)
+  .map(([key, module]) => ({[key]: module()}))
+  .reduce((p, c) => ({...p, ...c}), {}),
   plugins: [
     createPersistedState({
       paths: [

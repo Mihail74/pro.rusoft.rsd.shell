@@ -11,6 +11,7 @@ import 'src/themes/default.scss'
 
 import App from './App'
 
+import serviceFactory from './services'
 import storeFactory from './store'
 import routerFactory from './router'
 import material from './material'
@@ -18,6 +19,7 @@ import material from './material'
 Vue.config.productionTip = false
 
 const store = storeFactory()
+const applicationContext = serviceFactory(store)
 const router = routerFactory({ store })
 
 sync(store, router)
@@ -29,6 +31,9 @@ new Vue({
   el: '#app',
   router,
   store,
+  provide () {
+    return applicationContext
+  },
   material,
   template: '<App/>',
   components: { App }

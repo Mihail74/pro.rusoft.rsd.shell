@@ -48,6 +48,10 @@ export default ({ store }) => {
           {
             path: 'profiles/i/:profileId',
             component: pages.Profile
+          },
+          {
+            path: 'address/:address',
+            component: pages.Address
           }
         ]
       }
