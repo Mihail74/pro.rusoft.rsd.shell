@@ -43,6 +43,14 @@
               <span v-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.required" class="md-error">Password confirmation is a required field</span>
               <span v-else-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.sameAsPassword" class="md-error">Confirmation should be equal to Password field</span>
             </md-input-container>
+            <md-input-container :class="{
+              'md-input-invalid': $v.mnemonic.$error
+            }">
+              <label>Mnemonic</label>
+              <md-input v-model="mnemonic" @input="$v.mnemonic.$touch()" class="input-auto"></md-input>
+              <span v-if="$v.mnemonic.$error && !$v.mnemonic.required" class="md-error">Mnemonic is a required field</span>
+              <md-button @click="generateMnemonic">Generate</md-button>
+            </md-input-container>
             <div class="warning" v-if="error">
               <md-icon class="md-warn status">warning</md-icon>
               <span v-if="alreadyExistUserError">User already exist</span>

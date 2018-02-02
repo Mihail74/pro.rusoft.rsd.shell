@@ -1,6 +1,8 @@
 import { required, sameAs, email } from 'vuelidate/lib/validators'
+import bip39 from 'bip39'
 
 export default {
+  inject: ['hdWalletUtils'],
   data () {
     return {
       name: null,
@@ -8,7 +10,8 @@ export default {
       password: null,
       passwordConfirmation: null,
       error: null,
-      alreadyExistUserError: null
+      alreadyExistUserError: null,
+      mnemonic: null
     }
   },
   validations: {
@@ -25,6 +28,9 @@ export default {
     passwordConfirmation: {
       required,
       sameAsPassword: sameAs('password')
+    },
+    mnemonic: {
+      required
     }
   },
   methods: {
@@ -33,7 +39,9 @@ export default {
         await this.$store.dispatch('account/signup', {
           name: this.name,
           email: this.email,
-          password: this.password
+          password: this.password,
+          investingAddress: this.hdWalletUtils.createInvestingAddress(this.mnemonic),
+          personalAddress: this.hdWalletUtils.createPersonalAddress(this.mnemonic)
         })
         this.$router.push('/confirm')
       } catch (e) {
@@ -43,6 +51,9 @@ export default {
           this.alreadyExistUserError = true
         }
       }
+    },
+    generateMnemonic () {
+      this.mnemonic = bip39.generateMnemonic()
     }
   }
 }

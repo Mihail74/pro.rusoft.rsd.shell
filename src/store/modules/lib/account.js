@@ -13,10 +13,12 @@ export default (settings) => ({
     }
   },
   actions: {
-    async signup ({ state, commit }, { email, password }) {
+    async signup ({ state, commit }, { email, password, investingAddress, personalAddress }) {
       await BACKEND.post('security/signup', {
         email,
-        password
+        password,
+        investingAddress,
+        personalAddress
       })
     },
     async forgot ({ state, commit }, { email }) {
