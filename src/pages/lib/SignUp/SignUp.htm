@@ -49,6 +49,7 @@
               <label>Mnemonic</label>
               <md-input v-model="mnemonic" @input="$v.mnemonic.$touch()" class="input-auto"></md-input>
               <span v-if="$v.mnemonic.$error && !$v.mnemonic.required" class="md-error">Mnemonic is a required field</span>
+              <span v-else-if="!$v.mnemonic.isValidMnemonic" class="md-error">Mnemonic invalid</span>
               <md-button @click="generateMnemonic">Generate</md-button>
             </md-input-container>
             <div class="warning" v-if="error">

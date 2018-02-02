@@ -30,7 +30,11 @@ export default {
       sameAsPassword: sameAs('password')
     },
     mnemonic: {
-      required
+      required,
+      isValidMnemonic: function (value) {
+        console.log("'it's bork")
+        return bip39.validateMnemonic(value)
+      }
     }
   },
   methods: {
