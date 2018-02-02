@@ -1,5 +1,5 @@
 import Stomp from 'stompjs'
-import { WS } from 'src/remotes'
+import uniqid from 'uniqid'
 
 export default class WebSocketService {
   constructor (applicationContext) {
@@ -8,10 +8,12 @@ export default class WebSocketService {
     // key -> { server: {id, unsubscribe}, clients: {id, Subscriber}}
     this.connections = {}
 
-    this.stompClient = Stomp.client(WS.url)
+    const config = window.__APP_CONFIG__.websocket
+
+    this.stompClient = Stomp.client(config.url)
     this.stompClient.debug = null // disable embedded logger
 
-    this.stompClient.connect(WS.login, WS.password, () => {
+    this.stompClient.connect(config.login, config.password, () => {
       this.isConnected = true
     })
   }
@@ -32,7 +34,7 @@ export default class WebSocketService {
 
     const subscribers = this.connections[key].client || {}
 
-    const id = this.random()
+    const id = uniqid()
     const subscriber = new Subscriber(id, callback, () => this.unsubscribe(exchange, routeKey, id))
 
     this.connections[key].client = {
@@ -52,10 +54,6 @@ export default class WebSocketService {
         delete this.connections[key]
       }
     }
-  }
-
-  random () {
-    return Math.random().toString(36).substr(2, 9)
   }
 }
 

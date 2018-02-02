@@ -2,7 +2,12 @@
   "frontend": {
     "title": "RSD Project",
     "api": {
-      "url": "http://backend.rsd.tp.ntr1x.com/api/v1"
+      "url": "http://localhost:3000/api/v1"
+    },
+    "websocket": {
+      "url": "ws://172.27.30.141:15674/ws",
+      "login": "admin",
+      "password": "password"
     }
   }
 }
