@@ -17,12 +17,8 @@
   <md-card class="wallets">
     <md-card-content class="wallet">
       <div>
-        <div>
-          Инвестиционный счёт *
-        </div>
-        <div class="md-body-2">
-          {{ profile.investingWallet.address }}
-        </div>
+        <div>Инвестиционный счёт *</div>
+        <div class="md-body-2">{{ profile.investingWallet.address }}</div>
       </div>
       <div>
         <div>balance RSD</div>
@@ -69,7 +65,7 @@
           <label>Сумма перевода</label>
           <md-input v-model="transferAmount"></md-input>
       </md-input-container>
-      <md-button class="md-raised md-primary">Перевести</md-button>
+      <md-button class="md-raised md-primary" @click="transfer()">Перевести</md-button>
     </md-card-content>
   </md-card>
   <md-card class="projects">

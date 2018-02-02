@@ -5,7 +5,7 @@
       <div class="overlay">
         <div class="overlay-progress">
           <md-avatar class="md-large" v-if="project.owner.avatar">
-            <router-link tag="img" :src="project.owner.avatar.url" :to="'/private/profiles/i/' + project.owner.id"></router-link>
+            <router-link tag="img" :src="project.owner.avatar.url" :to="`/private/profiles/i/${project.owner.id}`"></router-link>
           </md-avatar>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <div class="members">
           <div v-for="member in project.members" :key="member.id" v-if="member.avatar" class="item">
             <md-avatar>
-                <router-link tag="img" :src="member.avatar.url" :to="'/private/profiles/i/' + member.id"></router-link>
+                <router-link tag="img" :src="member.avatar.url" :to="`/private/profiles/i/${member.id}`"></router-link>
               <img :src="member.avatar.url" />
             </md-avatar>
           </div>

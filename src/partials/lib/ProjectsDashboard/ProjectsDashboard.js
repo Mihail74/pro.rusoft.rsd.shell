@@ -1,7 +1,7 @@
 import { mapState } from 'vuex'
 import moment from 'moment'
 import pluralize from 'pluralize'
-import * as components from 'src/components'
+import * as components from 'src/partials'
 
 export default {
   components,

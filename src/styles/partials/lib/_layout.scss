@@ -30,3 +30,20 @@
     bottom: 0;
   }
 }
+
+@mixin md-button-right-no-border() {
+  .md-button{
+    min-width: 160px;
+    margin: 0;
+    float: right;
+  }
+}
+
+@mixin app-card-layout() {
+  margin-bottom: 300px;
+  .md-card {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+  }
+}

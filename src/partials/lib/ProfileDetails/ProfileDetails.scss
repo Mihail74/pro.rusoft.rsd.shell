@@ -2,7 +2,7 @@
 
 .root.partials-profile-details {
   @include flex(column, flex-start, center);
-  margin-bottom: 300px;
+  @include app-card-layout();
   .bio {
     .md-card-header {
       @include flex(row, flex-start, flex-start);
@@ -30,6 +30,9 @@
     .caption {
       max-width: 50%;
     }
+    .md-button {
+      min-width: 160px;
+    }
   }
   .transfer {
     @include flex(row, space-between, flex-start);
@@ -41,10 +44,8 @@
     }
     .controls {
       @include flex(column, flex-start, flex-end);
+      @include md-button-right-no-border()
       min-width: 40%;
-      .md-button {
-        margin-right: 0;
-      }
     }
   }
   .projects {
@@ -52,10 +53,4 @@
       @include flex(column, flex-start, flex-start);
     }
   }
-}
-
-.md-card {
-  width: 80%;
-  max-width: 800px;
-  margin-top: 20px;
 }
