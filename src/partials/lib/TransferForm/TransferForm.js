@@ -4,21 +4,25 @@ import { AddressModel } from 'src/models'
 
 export default {
   props: {
-    address: String
+    fromAddressIn: String,
+    toAddressIn: String,
+    valueIn: String,
+    currencyIn: String
   },
   inject: ['webSocketService', 'transactionSender'],
   data () {
     return {
       subscriber: null,
       mnemonic: null,
-      toAddress: null,
-      value: null
+      fromAddress: this.fromAddressIn,
+      toAddress: this.toAddressIn,
+      value: this.valueIn,
+      currency: this.currencyIn
     }
   },
   async created () {
-    await this.loadAddressDetails(this.address)
-
-    this.subscriber = this.webSocketService.subscribe('addresses', this.address, addressDetails => {
+    await this.loadAddressDetails(this.fromAddress)
+    this.subscriber = this.webSocketService.subscribe('addresses', this.fromAddress, addressDetails => {
       this.updateStore(AddressModel.fromJS(JSON.parse(addressDetails)))
     })
   },
@@ -31,7 +35,9 @@ export default {
       return this.addressLoadableModel.value
     },
     ...mapState({
-      addressLoadableModel: (state) => state.addresses.table.get(state.route.params.address)
+      addressLoadableModel (state) {
+        return state.addresses.table.get(this.fromAddress)
+      }
     })
   },
   methods: {
@@ -44,7 +50,7 @@ export default {
     }),
     send () {
       this.transactionSender.sendTransaction({
-        fromAddress: this.address,
+        fromAddress: this.fromAddress,
         toAddress: this.toAddress,
         mnemonic: this.mnemonic,
         value: Number(this.value)
