@@ -13,15 +13,13 @@
         <div class="md-subtitle">{{ project.description }}</div>
       </md-card-content>
       <md-card-content class="charts-block">
-        <chart class="chart"
-          type="doughnut"
-          :config="currentAmount()"
-          label="10 RSD"
+        <doughnut-chart class="chart"
+          :config="amountConfig(project)"
+          :label="`${amountPercent(project)}%`"
         />
-        <chart class="chart"
-        type="doughnut"
-        :config="currentAmount()"
-        label="90 дней"
+        <doughnut-chart class="chart"
+          :config="dateConfig(project)"
+          :label="`${dateLeft(project)} дн.`"
         />
       </md-card-content>
     </md-card>

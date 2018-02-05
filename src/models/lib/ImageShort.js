@@ -5,7 +5,7 @@ export const schema = {
   format: Joi.string(),
   width: Joi.number(),
   height: Joi.number(),
-  url: Joi.string().required(),
+  url: Joi.string(),
   version: Joi.number()
 }
 

@@ -1,6 +1,7 @@
 import { ProjectShort, DialogModel } from 'src/models'
 import { Chart } from 'src/components'
 import { TransferModal } from 'src/modals'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -27,13 +28,21 @@ export default {
     timeChartFactory,
     valueChartFactory,
     support (project) {
+      console.log(this.$store.state.account.principal)
+
       this.$store.dispatch('modals/open', new DialogModel({
         factory: () => TransferModal,
         data: {
-          
+          fromAddress: this.investingWallet,
+          toAddress: this.project.address
         }
       }))
     }
+  },
+  computed: {
+    ...mapState({
+      investingWallet: (state) => state.account.principal.user.investingWallet.address
+    })
   }
 }
 

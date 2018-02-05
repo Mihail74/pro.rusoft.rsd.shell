@@ -32,6 +32,7 @@
     "joi-browser": "^13.0.1",
     "material-colors-scss": "^1.0.0",
     "material-design-icons-iconfont": "^3.0.3",
+    "moment": "^2.20.1",
     "morgan": "^1.9.0",
     "pluralize": "^7.0.0",
     "roboto-fontface": "^0.8.0",

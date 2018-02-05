@@ -4,6 +4,7 @@ import bip39 from 'bip39'
 export default class HdWalletUtils {
   constructor (applicationContext) {
     this.applicationContext = applicationContext
+    this.network = bitcoin.networks.testnet
   }
 
   createInvestingAddress (mnemonic) {
