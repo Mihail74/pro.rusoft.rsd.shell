@@ -34,19 +34,15 @@
     <md-card-area>
       <md-card-content>
         <h4 class="md-caption">Привлекаемые средства:</h4>
-        <div class="stats">
-          <div class="item">
-            <chart
-              type="doughnut"
-              :config="timeChartFactory(timeProgress)"
-            />
-          </div>
-          <div class="item">
-            <chart
-              type="doughnut"
-              :config="valueChartFactory(valueProgress)"
-            />
-          </div>
+        <div class="charts-block">
+          <doughnut-chart class="chart"
+            :config="amountConfig(project)"
+            :label="`${amountPercent(project)}%`"
+          />
+          <doughnut-chart class="chart"
+            :config="dateConfig(project)"
+            :label="`${dateLeft(project)} дн.`"
+          />
         </div>
       </md-card-content>
     </md-card-area>

@@ -19,6 +19,9 @@
           <md-list-item @click="$refs.sidebar.toggle(); $router.push('/private/projects')">
             <md-icon>apps</md-icon> <span>Projects</span>
           </md-list-item>
+          <md-list-item @click="$refs.sidebar.toggle(); $router.push('/private/profiles/i/' + profileId)">
+            <md-icon>apps</md-icon> <span>Profile</span>
+          </md-list-item>
         </md-list>
       </md-sidenav>
 

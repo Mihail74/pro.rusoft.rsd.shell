@@ -34,16 +34,14 @@
     }
   }
 
-  .stats {
-    display: flex;
-    margin: -4px;
-    >.item {
-      flex: 0 0 auto;
-      margin: 4px;
-      >.root.component-chart {
-        width: 72px;
-        height: 72px;
-      }
+
+  .charts-block {
+    @include flex(row, flex-start, center);
+    margin-left: auto;
+    .chart {
+        width: 100px;
+        height: 100px;
     }
   }
+
 }
