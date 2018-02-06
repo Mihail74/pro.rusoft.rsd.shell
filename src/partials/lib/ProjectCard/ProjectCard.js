@@ -1,6 +1,6 @@
 import { ProjectShort, DialogModel } from 'src/models'
 import { DoughnutChart } from 'src/components'
-import { TransferModal } from 'src/modals'
+import { DepositModal } from 'src/modals'
 import { mapState } from 'vuex'
 import BigNumber from 'bignumber.js'
 import moment from 'moment'
@@ -30,18 +30,15 @@ export default {
     timeChartFactory,
     valueChartFactory,
     support (project) {
-      console.log(this.$store.state.account.principal)
-
       this.$store.dispatch('modals/open', new DialogModel({
-        factory: () => TransferModal,
+        factory: () => DepositModal,
         data: {
-          fromAddress: this.investingWallet,
-          toAddress: this.project.address
+          project: this.project,
+          user: this.user
         }
       }))
     },
     amountConfig (project) {
-      console.log(project)
       const targetValue = new BigNumber(project.targetValue)
       const current = new BigNumber(project.balance)
       return {
@@ -83,6 +80,7 @@ export default {
   },
   computed: {
     ...mapState({
+      user: (state) => state.account.principal.user,
       investingWallet: (state) => state.account.principal.user.investingWallet.address
     })
   }

@@ -21,10 +21,9 @@
         <div class="md-body-2">{{ profile.investingWallet.address }}</div>
       </div>
       <div>
-        <div>{{ investingWalletBalance }}</div>
-        <div>unconfirmed: {{ investingWalletUnconfirmedBalance }}</div>
+        <address-balance :address="profile.investingWallet.address" :isAddressVisible="false"></address-balance>
       </div>
-      <md-button class="md-raised md-primary" @click="faucet">Приобрести 0.005 RSD</md-button>
+      <md-button class="md-raised md-primary" @click="faucet">Приобрести 0.05 RSD</md-button>
     </md-card-content>
     <md-card-content class="wallet">
       <div>
@@ -32,8 +31,7 @@
         <div class="md-body-2">{{ profile.personalWallet.address }}</div>
       </div>
       <div>
-        <div>{{ personalWalletBalance }}</div>
-        <div>unconfirmed: {{ personalWalletUnconfirmedBalance }}</div>
+        <address-balance :address="profile.personalWallet.address" :isAddressVisible="false"></address-balance>
       </div>
       <md-button class="md-raised md-primary">Инвестировать</md-button>
     </md-card-content>

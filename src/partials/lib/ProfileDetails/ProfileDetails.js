@@ -2,10 +2,12 @@ import { UserModel, DialogModel } from 'src/models'
 import ProjectsList from './ProjectsList/ProjectsList.vue'
 import { TransferModal } from 'src/modals'
 import { BACKEND } from 'src/remotes'
+import { AddressBalance } from 'src/components'
 
 export default {
   components: {
-    ProjectsList
+    ProjectsList,
+    AddressBalance
   },
   props: {
     profile: UserModel
@@ -15,23 +17,8 @@ export default {
       transferAmount: null,
       currency: null,
       recipient: null,
-      subscriber: null,
-      investingWalletBalance: null,
-      investingWalletUnconfirmedBalance: null,
-      personalWalletUnconfirmedBalance: null,
-      personalWalletBalance: null
+      subscriber: null
     }
-  },
-  async created () {
-    const { data } = await BACKEND.get(`address/${this.profile.investingWallet.address}`)
-    this.investingWalletBalance = data.balance
-    this.investingWalletUnconfirmedBalance = data.unconfirmedBalance
-    console.log(this.profile.personalWallet.address)
-
-    const { data: data2 } = await BACKEND.get(`address/${this.profile.personalWallet.address}`)
-    console.log(data2)
-    this.personalWalletBalance = data2.balance
-    this.personalWalletUnconfirmedBalance = data2.unconfirmedBalance
   },
   methods: {
     transfer () {

@@ -25,13 +25,13 @@
   }
   .wallets {
     .wallet {
-      @include flex(row, space-between, flex-start);
+      @include flex(row, space-between, center);
     }
     .caption {
       max-width: 50%;
     }
     .md-button {
-      min-width: 160px;
+      min-width: 200px;
     }
   }
   .transfer {

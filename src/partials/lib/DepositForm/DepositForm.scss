@@ -1,0 +1,23 @@
+@import '~@/styles/partials/mixins';
+
+.root.partials-deposit-form {
+  @include md-button-right-no-border();
+  .md-card-header {
+    @include flex(row, space-between, flex-start);
+    .md-card-media {
+      margin: 0;
+    }
+    .md-card-header-text {
+      margin-left: 16px;
+      .md-title {
+        margin: 0;
+      }
+    }
+  }
+  .address-balance {
+    @include flex(row, flex-start, center);
+    .balance {
+      margin-left: 16px;
+    }
+  }
+}

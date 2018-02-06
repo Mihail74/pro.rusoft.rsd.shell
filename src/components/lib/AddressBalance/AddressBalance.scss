@@ -1,0 +1,10 @@
+.root.component-address-balance {
+  .balance {
+    position: relative;
+    min-height: 24px;
+    .md-spinner {
+      position: absolute;
+      top: 0;
+    }
+  }
+}
