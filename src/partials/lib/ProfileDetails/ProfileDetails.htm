@@ -16,30 +16,29 @@
   </md-card>
   <md-card class="wallets">
     <md-card-content class="wallet">
-      <div>
+      <div class="address">
         <div>Инвестиционный счёт *</div>
         <div class="md-body-2">{{ profile.investingWallet.address }}</div>
       </div>
-      <div>
-        <address-balance :address="profile.investingWallet.address" :isAddressVisible="false"></address-balance>
-      </div>
-      <md-button class="md-raised md-primary" @click="faucet">Приобрести 0.05 RSD</md-button>
+      <address-balance class="address-balance" :address="profile.investingWallet.address" :isAddressVisible="false"></address-balance>
+      <md-button class="md-raised md-primary" :disabled="isPurchasing" @click="purchase">
+        <span v-if="!isPurchasing">Приобрести 0.05 RSD</span>
+        <md-spinner v-else md-indeterminate :md-size="24"></md-spinner>
+      </md-button>
     </md-card-content>
     <md-card-content class="wallet">
-      <div>
+      <div class="address">
         <div>Личный счёт</div>
         <div class="md-body-2">{{ profile.personalWallet.address }}</div>
       </div>
-      <div>
-        <address-balance :address="profile.personalWallet.address" :isAddressVisible="false"></address-balance>
-      </div>
-      <md-button class="md-raised md-primary">Инвестировать</md-button>
+      <address-balance class="address-balance" :address="profile.personalWallet.address" :isAddressVisible="false"></address-balance>
+      <md-button class="md-raised md-primary" :disabled="true">Инвестировать</md-button>
     </md-card-content>
     <md-card-content class="caption">
       <div class="md-caption">* Чтобы получить в свое распоряжение средства инвестиционного счета вы должны поддержать какой-либо проект</div>
     </md-card-content>
   </md-card>
-  <md-card class="transfer">
+  <md-card class="transfer" v-if="false">
     <md-card-content>
       <div class="md-title">Перевод</div>
       <div class="md-caption caption">Выберите сумму и валюту для перевода средств на другой счет. Вы можете распоряжаться всей суммой вашего личного счёта</div>
@@ -78,10 +77,10 @@
         <projects-list :projects="profile.projects" />
       </md-tab>
       <md-tab id="deposited" md-label="Поддержанные">
-        <projects-list :projects="profile.deposites.map(p => p.project)" />
+        <projects-list :projects="supportedProjects" />
       </md-tab>
-      <md-tab id="withdrawn" md-label="Стартовавшие">
-        <projects-list :projects="profile.withdrawals.map(p => p.project)" />
+      <md-tab id="withdrawn" md-label="Успешные">
+        <projects-list :projects="withdrawnProjects" />
       </md-tab>
     </md-tabs>
   </md-card>

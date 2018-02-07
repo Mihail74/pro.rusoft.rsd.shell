@@ -14,7 +14,6 @@ export default class TransactionService {
     const wallet = bitcoin.HDNode
       .fromSeedBuffer(bip39.mnemonicToSeed(mnemonic), this.network)
       .derivePath(`m/44'/1'/0'/0/0`)
-
     let { data: { utxo: utxos } } = await BACKEND.get(`address/${fromAddress}/utxo`)
 
     utxos = utxos.map(e => ({

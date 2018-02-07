@@ -19,9 +19,6 @@
           <md-list-item @click="$refs.sidebar.toggle(); $router.push('/private/projects')">
             <md-icon>apps</md-icon> <span>Projects</span>
           </md-list-item>
-          <md-list-item @click="$refs.sidebar.toggle(); $router.push('/private/profiles/i/' + profileId)">
-            <md-icon>apps</md-icon> <span>Profile</span>
-          </md-list-item>
         </md-list>
       </md-sidenav>
 
@@ -35,17 +32,15 @@
               <img src="/static/logo-small.svg" />
             </h2>
 
-            <md-button class="md-icon-button greyed">
-              <md-icon>help</md-icon>
-            </md-button>
-            <md-button class="md-icon-button greyed">
-              <md-icon>settings</md-icon>
-            </md-button>
             <md-menu md-size="4" md-theme="inversed">
               <md-button class="md-icon-button md-raised md-primary" md-menu-trigger>
                 <span>U</span>
               </md-button>
               <md-menu-content md-theme="inversed">
+                <md-menu-item @click="$router.push('/private/profiles/i/' + profileId)">
+                    <md-icon>account_circle</md-icon>
+                    <span>Profile</span>
+                </md-menu-item>
                 <md-menu-item @click="logout">
                   <md-icon>exit_to_app</md-icon>
                   <span>Log Out</span>

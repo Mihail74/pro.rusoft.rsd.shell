@@ -30,6 +30,7 @@
     "express": "^4.14.1",
     "hbs": "^4.0.1",
     "joi-browser": "^13.0.1",
+    "lodash": "^4.17.5",
     "material-colors-scss": "^1.0.0",
     "material-design-icons-iconfont": "^3.0.3",
     "moment": "^2.20.1",
@@ -43,7 +44,7 @@
     "vue-material": "^0.8.1",
     "vue-router": "^3.0.1",
     "vue-types": "^1.0.2",
-    "vuelidate": "^0.5.0",
+    "vuelidate": "^0.6.1",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.0.0",
     "vuex-router-sync": "^5.0.0"

@@ -26,6 +26,15 @@
   .wallets {
     .wallet {
       @include flex(row, space-between, center);
+      .address {
+        flex-basis: 40%;
+      }
+      .address-balance {
+        flex-basis: 20%;
+      }
+      .md-button {
+        @include flex(row, space-around, center);
+      }
     }
     .caption {
       max-width: 50%;

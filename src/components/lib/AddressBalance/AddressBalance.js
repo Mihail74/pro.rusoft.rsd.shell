@@ -14,10 +14,10 @@ export default {
     }
   },
   async created () {
-    await this.loadAddressDetails(this.address)
     this.subscriber = this.webSocketService.subscribe('addresses', this.address, addressDetails => {
       this.updateStore(AddressModel.fromJS(JSON.parse(addressDetails)))
     })
+    await this.loadAddressDetails(this.address)
   },
   beforeDestroy () {
     this.subscriber.unsubscribe()

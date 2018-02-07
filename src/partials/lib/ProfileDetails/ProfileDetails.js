@@ -1,8 +1,9 @@
 import { UserModel, DialogModel } from 'src/models'
 import ProjectsList from './ProjectsList/ProjectsList.vue'
 import { TransferModal } from 'src/modals'
-import { BACKEND } from 'src/remotes'
+import { mapActions } from 'vuex'
 import { AddressBalance } from 'src/components'
+import _ from 'lodash'
 
 export default {
   components: {
@@ -17,10 +18,22 @@ export default {
       transferAmount: null,
       currency: null,
       recipient: null,
-      subscriber: null
+      subscriber: null,
+      isPurchasing: false
+    }
+  },
+  computed: {
+    supportedProjects () {
+      return _.uniqBy(this.profile.deposites, e => e.project.id).map(e => e.project)
+    },
+    withdrawnProjects () {
+      return _.uniqBy(this.profile.withdrawals, e => e.project.id).map(e => e.project)
     }
   },
   methods: {
+    ...mapActions({
+      faucet: 'api/post'
+    }),
     transfer () {
       this.$store.dispatch('modals/open', new DialogModel({
         factory: () => TransferModal,
@@ -32,11 +45,18 @@ export default {
         }
       }))
     },
-    faucet () {
-      BACKEND.post('/faucet', {
-        address: this.profile.investingWallet.address,
-        value: 5000000
-      })
+    async purchase () {
+      this.isPurchasing = true
+      try {
+        await this.faucet({
+          url: '/faucet',
+          data: {
+            value: 5000000
+          }
+        })
+      } finally {
+        this.isPurchasing = false
+      }
     }
   }
 }

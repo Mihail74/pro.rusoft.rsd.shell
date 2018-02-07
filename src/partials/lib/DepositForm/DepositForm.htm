@@ -17,14 +17,24 @@
     <address-balance class="balance" :address="user.investingWallet.address" :isAddressVisible="false"/>
   </md-card-content>
   <md-card-content>
-    <md-input-container>
-      <label>Value</label>
-      <md-input type="number" v-model="value"></md-input>
-    </md-input-container>
-    <md-input-container>
-      <label>mnemonic key</label>
-      <md-input v-model="mnemonic"></md-input>
-    </md-input-container>
-    <md-button class="md-raised md-primary" @click="support">Перечислить</md-button>
+    <form novalidate @submit.prevent="$v.$touch(); !$v.$invalid && support()">
+      <md-input-container :class="{'md-input-invalid': $v.value.$error}">
+        <label>Value</label>
+        <md-input type="number" v-model="value" @input="$v.value.$touch()"></md-input>
+        <span v-if="$v.value.$error && !$v.value.required" class="md-error">Value is a required field</span>
+        <span v-if="$v.value.$error && !$v.value.minValue" class="md-error">Value must be greater than {{ $v.value.$params.minValue.min - 1 }}</span>
+      </md-input-container>
+      <md-input-container :class="{'md-input-invalid': $v.mnemonic.$error}">
+        <label>mnemonic key</label>
+        <md-input v-model="mnemonic" @input="$v.mnemonic.$touch()"></md-input>
+        <span v-if="$v.mnemonic.$error && !$v.mnemonic.required" class="md-error">Mnemonic is a required field</span>
+        <span v-else-if="!$v.mnemonic.isValidMnemonic" class="md-error">Mnemonic invalid</span>
+      </md-input-container>
+      <span v-if="isError" class="md-caption">Error sending. Try again</span>
+      <md-button class="md-raised md-primary" :disabled="$v.$invalid || isSending" type="submit">
+        <div v-if="!isSending">Перечислить</div>
+        <md-spinner v-else md-indeterminate :md-size="24"></md-spinner>
+      </md-button>
+    </form>
   </md-card-content>
 </md-card>

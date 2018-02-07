@@ -1,7 +1,8 @@
 import { ProjectShort } from 'src/models'
 import { AddressBalance } from 'src/components'
-import { mapState } from 'vuex'
-import { BACKEND, withAuthorization } from 'src/remotes'
+import { mapState, mapActions } from 'vuex'
+import { required, numeric, minValue } from 'vuelidate/lib/validators'
+import bip39 from 'bip39'
 
 export default {
   components: {
@@ -14,7 +15,22 @@ export default {
   data () {
     return {
       mnemonic: null,
-      value: null
+      value: null,
+      isSending: false,
+      isError: false
+    }
+  },
+  validations: {
+    mnemonic: {
+      required,
+      isValidMnemonic: function (value) {
+        return bip39.validateMnemonic(value)
+      }
+    },
+    value: {
+      required,
+      numeric,
+      minValue: minValue(1)
     }
   },
   computed: {
@@ -24,18 +40,31 @@ export default {
     })
   },
   methods: {
+    ...mapActions({
+      deposit: 'api/post'
+    }),
     async support () {
-      const rawtx = await this.transactionService.createSignedFromInvestingWalletTx({
-        fromAddress: this.user.investingWallet.address,
-        toAddress: this.project.address,
-        mnemonic: this.mnemonic,
-        value: this.value
-      })
-      console.log(this.project)
-      await BACKEND.post(`/projects/${this.project.id}/deposit`, {
-        rawtx
-      },
-      withAuthorization(this.principal.token))
+      this.isSending = true
+      this.isError = false
+      try {
+        const rawtx = await this.transactionService.createSignedFromInvestingWalletTx({
+          fromAddress: this.user.investingWallet.address,
+          toAddress: this.project.address,
+          mnemonic: this.mnemonic,
+          value: this.value
+        })
+        this.deposit({
+          url: `/projects/${this.project.id}/deposit`,
+          data: {
+            rawtx
+          }
+        }).catch(e => {
+          console.log(e)
+          this.isError = true
+        })
+      } finally {
+        this.isSending = false
+      }
     }
   }
 }
