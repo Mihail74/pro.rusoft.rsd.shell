@@ -13,6 +13,7 @@ export const schema = () => ({
   members: Joi.array().items(Joi.object().type(UserShort)).allow(null),
   targetValue: Joi.number(),
   balance: Joi.number(),
+  unconfirmedBalance: Joi.number(),
   startedDate: Joi.object().type(Date).allow(null),
   dueDate: Joi.object().type(Date).allow(null),
   status: Joi.string().required(),

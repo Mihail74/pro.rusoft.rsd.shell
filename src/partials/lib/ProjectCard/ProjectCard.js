@@ -1,13 +1,13 @@
 import { ProjectShort, DialogModel } from 'src/models'
-import { DoughnutChart } from 'src/components'
+import { DoughnutChart, BalanceDoughnutChart } from 'src/components'
 import { DepositModal } from 'src/modals'
 import { mapState } from 'vuex'
-import BigNumber from 'bignumber.js'
 import moment from 'moment'
 
 export default {
   components: {
-    DoughnutChart
+    DoughnutChart,
+    BalanceDoughnutChart
   },
   props: {
     project: ProjectShort
@@ -36,24 +36,6 @@ export default {
           project: this.project
         }
       }))
-    },
-    amountConfig (project) {
-      const targetValue = new BigNumber(project.targetValue)
-      const current = new BigNumber(project.balance)
-      return {
-        data: {
-          labels: ['Собрано', 'Осталось'],
-          datasets: [{
-            label: 'Цель',
-            data: [current.toNumber(), Math.max(targetValue.minus(current).toNumber(), 0)],
-            borderWidth: [0, 3],
-            backgroundColor: ['#2196f3']
-          }]
-        }
-      }
-    },
-    amountPercent (project) {
-      return new BigNumber(project.balance).div(new BigNumber(project.targetValue)).mul(100).toFormat(0).toString()
     },
     dateConfig (project) {
       const started = moment(project.startedDate)

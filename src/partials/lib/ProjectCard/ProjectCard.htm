@@ -35,9 +35,8 @@
       <md-card-content>
         <h4 class="md-caption">Привлекаемые средства:</h4>
         <div class="charts-block">
-          <doughnut-chart class="chart"
-            :config="amountConfig(project)"
-            :label="`${amountPercent(project)}%`"
+          <balance-doughnut-chart class="chart"
+            :project="project"
           />
           <doughnut-chart class="chart"
             :config="dateConfig(project)"

@@ -43,9 +43,14 @@ export default (settings) => ({
       const { content } = await dispatch('fetchProjects')
       commit(PROJECTS_LOADED, content.map(ProjectShort.fromJS))
     },
-    async fetchProjectDetails ({ state, commit, rootState }, id) {
-      const { data } = await BACKEND.get(`projects/i/${id}`, withAuthorization(rootState.account.principal.token))
+    async fetchProjectShortDetails ({ state, commit, rootState }, id) {
+      const { data } = await BACKEND.get(`projects/i/${id}/short`, withAuthorization(rootState.account.principal.token))
       return data
+    },
+    async loadProjectShortDetails ({ state, commit, dispatch }, id) {
+      commit(PROJECT_DETAILS_LOADING, id)
+      const project = await dispatch('fetchProjectShortDetails', id)
+      commit(PROJECT_DETAILS_LOADED, ProjectModel.fromJS(project))
     },
     async loadProjectDetails ({ state, commit, dispatch }, id) {
       commit(PROJECT_DETAILS_LOADING, id)
