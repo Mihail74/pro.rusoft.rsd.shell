@@ -43,20 +43,6 @@
       min-width: 200px;
     }
   }
-  .transfer {
-    @include flex(row, space-between, flex-start);
-    .md-card-content {
-      max-width: 50%;
-      .caption {
-        margin-top: 10px;
-      }
-    }
-    .controls {
-      @include flex(column, flex-start, flex-end);
-      @include md-button-right-no-border()
-      min-width: 40%;
-    }
-  }
   .projects {
     .md-card-header {
       @include flex(column, flex-start, flex-start);

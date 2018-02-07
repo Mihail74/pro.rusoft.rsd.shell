@@ -34,17 +34,6 @@ export default {
     ...mapActions({
       faucet: 'api/post'
     }),
-    transfer () {
-      this.$store.dispatch('modals/open', new DialogModel({
-        factory: () => TransferModal,
-        data: {
-          fromAddress: this.profile.personalWallet.address,
-          toAddress: this.recipient,
-          value: this.transferAmount,
-          currency: this.currency
-        }
-      }))
-    },
     async purchase () {
       this.isPurchasing = true
       try {

@@ -1,8 +1,0 @@
-@import '~@/styles/partials/mixins';
-
-.root.partials-transfer-form {
-  @include md-button-right-no-border();
-  .balance {
-    @include flex(row, flex-start, center);
-  }
-}

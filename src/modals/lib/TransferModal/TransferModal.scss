@@ -1,8 +1,0 @@
-@import '~@/styles/partials/mixins';
-@import '~@/styles/partials/variables';
-
-.root.modal-transfer-modal {
-  @include shell-modal();
-  @include md-button-right-no-border();
-  min-width: 512px;
-}
