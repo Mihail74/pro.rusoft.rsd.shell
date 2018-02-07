@@ -7,7 +7,11 @@
       <div class="md-title">{{ project.name }}</div>
     </md-card-header-text>
   </md-card-header>
-
+  <md-card-content class="address-balance">
+    <div>Проект собрал: </div>
+    <address-balance class="balance" :address="project.address" :isAddressVisible="false"/>
+    <span>&nbsp;из {{ project.targetValue }} </span>
+  </md-card-content>
   <md-card-content class="address-balance">
     <div>Баланс кошелька:</div>
     <address-balance class="balance" :address="user.investingWallet.address" :isAddressVisible="false"/>

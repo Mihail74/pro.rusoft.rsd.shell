@@ -33,8 +33,7 @@ export default {
       this.$store.dispatch('modals/open', new DialogModel({
         factory: () => DepositModal,
         data: {
-          project: this.project,
-          user: this.user
+          project: this.project
         }
       }))
     },

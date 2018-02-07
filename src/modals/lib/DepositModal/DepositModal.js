@@ -7,7 +7,6 @@ export default {
     })
   },
   props: {
-    user: Object,
     project: ProjectShort
   }
 }
