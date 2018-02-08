@@ -47,3 +47,13 @@
     margin-top: 20px;
   }
 }
+
+@mixin md-button-with-spinner {
+  .md-button {
+    position: relative;
+    @include flex(row, space-around, center);
+    .md-spinner {
+      position: absolute;
+    }
+  }
+}

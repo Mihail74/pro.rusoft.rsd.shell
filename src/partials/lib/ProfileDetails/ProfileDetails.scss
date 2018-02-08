@@ -32,9 +32,7 @@
       .address-balance {
         flex-basis: 20%;
       }
-      .md-button {
-        @include flex(row, space-around, center);
-      }
+      @include md-button-with-spinner();
     }
     .caption {
       max-width: 50%;

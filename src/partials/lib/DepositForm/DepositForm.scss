@@ -20,7 +20,5 @@
       margin-left: 16px;
     }
   }
-  .md-button {
-    @include flex(row, space-around, center);
-  }
+  @include md-button-with-spinner();
 }
