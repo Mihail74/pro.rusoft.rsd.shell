@@ -1,9 +1,10 @@
 import { ProjectShort } from 'src/models'
 import { AddressBalance } from 'src/components'
 import { mapState, mapActions } from 'vuex'
-import { required, numeric, minValue } from 'vuelidate/lib/validators'
+import { required, minValue } from 'vuelidate/lib/validators'
 import { mnemonic } from 'src/validators'
 import BigNumber from 'bignumber.js'
+import { formatRSD } from 'src/utils'
 
 export default {
   components: {
@@ -28,16 +29,18 @@ export default {
       mnemonic
     },
     value: {
-      required
-      // numeric,
-      // minValue: minValue(0.001)
+      required,
+      minValue: minValue(0.01)
     }
   },
   computed: {
     ...mapState({
       principal: (state) => state.account.principal,
       user: (state) => state.account.principal.user
-    })
+    }),
+    targetValue () {
+      return formatRSD(this.project.targetValue)
+    }
   },
   methods: {
     ...mapActions({

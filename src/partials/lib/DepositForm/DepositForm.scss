@@ -2,6 +2,14 @@
 
 .root.partials-deposit-form {
   @include md-button-right-no-border();
+  .md-card-media-cover {
+    .md-card-area {
+      background-color: rgba(0, 0, 0, 0.4);
+      .md-title {
+        margin: 0;
+      }
+    }
+  }
   .md-card-header {
     @include flex(row, space-between, flex-start);
     .md-card-media {
@@ -16,9 +24,15 @@
   }
   .address-balance {
     @include flex(row, flex-start, center);
+    margin-top: 16px;
     .balance {
       margin-left: 16px;
     }
   }
   @include md-button-with-spinner();
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
 }

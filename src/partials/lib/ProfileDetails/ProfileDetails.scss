@@ -6,6 +6,9 @@
   .bio {
     .md-card-header {
       @include flex(row, flex-start, flex-start);
+      .md-card-media {
+        @include flex(row, flex-start, center);
+      }
       .md-card-header-text {
         margin-left: 20px;
         max-width: 50%;

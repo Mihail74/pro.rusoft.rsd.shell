@@ -1,7 +1,9 @@
 <div class="root component-address-balance">
   <div class="address" v-if="isAddressVisible">{{ address }}</div>
   <div class="balance" >
-    <div v-if="addressLoadableModel.isLoaded">{{ balance }}</div>
-    <md-spinner v-else md-indeterminate :md-size="24"></md-spinner>
+    <transition name="fade">
+      <div v-if="addressLoadableModel.isLoaded">{{ balance }}</div>
+      <md-spinner v-else md-indeterminate :md-size="24"></md-spinner>
+    </transition>
   </div>
 </div>

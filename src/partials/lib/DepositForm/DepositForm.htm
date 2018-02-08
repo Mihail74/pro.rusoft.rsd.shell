@@ -1,12 +1,18 @@
 <md-card class="root partials-deposit-form">
-  <md-card-header>
-    <md-card-media>
-      <img :src="project.thumbnail.url">
-    </md-card-media>
-    <md-card-header-text>
-      <div class="md-title">{{ project.name }}</div>
-    </md-card-header-text>
-  </md-card-header>
+
+    <md-card-media-cover>
+        <md-card-media md-ratio="16:9">
+          <img :src="project.thumbnail.url">
+        </md-card-media>
+    
+        <md-card-area>
+          <md-card-header>
+            <div class="md-title">{{ project.name }}</div>
+            <div class="md-subhead">Цель: {{ targetValue }}</div>
+          </md-card-header>
+        </md-card-area>
+      </md-card-media-cover>
+
   <md-card-content class="address-balance">
     <div>Баланс кошелька:</div>
     <address-balance class="balance" :address="user.investingWallet.address" :isAddressVisible="false"/>
@@ -17,7 +23,7 @@
         <label>Сумма</label>
         <md-input type="number" v-model="value" @input="$v.value.$touch()"></md-input>
         <span v-if="$v.value.$error && !$v.value.required" class="md-error">Обязательно для заполнения</span>
-        <!-- <span v-if="$v.value.$error && !$v.value.minValue" class="md-error">Сумма должна быть не меньше {{ $v.value.$params.minValue.min }}</span> -->
+        <span v-if="$v.value.$error && !$v.value.minValue" class="md-error">Сумма должна быть не меньше {{ $v.value.$params.minValue.min }}</span>
       </md-input-container>
       <md-input-container :class="{'md-input-invalid': $v.mnemonic.$error}">
         <label>mnemonic-ключ</label>

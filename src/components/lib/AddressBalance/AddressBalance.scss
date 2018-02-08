@@ -1,10 +1,21 @@
+@import '~@/styles/partials/mixins';
+
 .root.component-address-balance {
   .balance {
+    @include flex(row, space-around, stretch);
     position: relative;
     min-height: 24px;
+    min-width: 36px;
     .md-spinner {
       position: absolute;
       top: 0;
     }
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
