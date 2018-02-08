@@ -3,6 +3,7 @@ import { AddressBalance } from 'src/components'
 import { mapState, mapActions } from 'vuex'
 import { required, numeric, minValue } from 'vuelidate/lib/validators'
 import { mnemonic } from 'src/validators'
+import BigNumber from 'bignumber.js'
 
 export default {
   components: {
@@ -27,9 +28,9 @@ export default {
       mnemonic
     },
     value: {
-      required,
-      numeric,
-      minValue: minValue(1)
+      required
+      // numeric,
+      // minValue: minValue(0.001)
     }
   },
   computed: {
@@ -50,13 +51,13 @@ export default {
       // TODO: @mdkardaev внутри CPU-intensive операция, поэтому так
       setTimeout(this.signAndSend, 500)
     },
-    async signAndSend () {
+    async signAndSend () {     
       try {
         const rawtx = await this.transactionService.createSignedFromInvestingWalletTx({
           fromAddress: this.user.investingWallet.address,
           toAddress: this.project.address,
           mnemonic: this.mnemonic,
-          value: this.value
+          value: new BigNumber(this.value).mul(1e8).toNumber()
         })
         await this.deposit({
           url: `/projects/${this.project.id}/deposit`,

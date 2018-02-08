@@ -1,6 +1,7 @@
 import { mapState, mapActions, mapMutations } from 'vuex'
 import { ADDRESS_DETAILS_LOADED } from '@/store/modules/lib/addresses'
 import { AddressModel } from 'src/models'
+import { formatRSD } from 'src/utils'
 
 export default {
   props: {
@@ -33,7 +34,7 @@ export default {
       }
     }),
     balance () {
-      return this.addressDetails.balance.plus(this.addressDetails.unconfirmedBalance).toNumber()
+      return formatRSD(this.addressDetails.balance.plus(this.addressDetails.unconfirmedBalance))
     }
   },
   methods: {

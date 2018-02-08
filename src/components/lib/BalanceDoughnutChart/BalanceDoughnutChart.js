@@ -2,6 +2,7 @@ import { DoughnutChart } from 'src/components'
 import { ProjectShort } from 'src/models'
 import BigNumber from 'bignumber.js'
 import { mapActions } from 'vuex'
+import { formatRSD } from 'src/utils'
 
 export default {
   components: {
@@ -37,12 +38,13 @@ export default {
     getConfig () {
       const targetValue = new BigNumber(this.project.targetValue)
       const current = this.balance
+      
       return {
         data: {
           labels: ['Собрано', 'Осталось'],
           datasets: [{
             label: 'Цель',
-            data: [current.toNumber(), Math.max(targetValue.minus(current).toNumber(), 0)],
+            data: [formatRSD(current.toNumber()), formatRSD(Math.max(targetValue.minus(current).toNumber(), 0))],
             borderWidth: [0, 3],
             backgroundColor: ['#2196f3']
           }]

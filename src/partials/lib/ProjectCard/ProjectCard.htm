@@ -1,6 +1,6 @@
 <div class="root component-project-card">
   <md-card md-with-hover>
-    <md-card-media>
+    <md-card-media class="project-image">
       <img :src="project.thumbnail.url" />
       <div class="overlay">
         <div class="overlay-progress">
@@ -10,7 +10,7 @@
         </div>
       </div>
     </md-card-media>
-    <md-card-area>
+    <md-card-area class="project-description">
       <md-card-header>
         <md-card-header-text>
           <h3 class="md-title">{{project.name}}</h3>

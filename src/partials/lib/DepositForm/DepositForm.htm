@@ -17,7 +17,7 @@
         <label>Сумма</label>
         <md-input type="number" v-model="value" @input="$v.value.$touch()"></md-input>
         <span v-if="$v.value.$error && !$v.value.required" class="md-error">Обязательно для заполнения</span>
-        <span v-if="$v.value.$error && !$v.value.minValue" class="md-error">Сумма должна быть больше {{ $v.value.$params.minValue.min - 1 }}</span>
+        <!-- <span v-if="$v.value.$error && !$v.value.minValue" class="md-error">Сумма должна быть не меньше {{ $v.value.$params.minValue.min }}</span> -->
       </md-input-container>
       <md-input-container :class="{'md-input-invalid': $v.mnemonic.$error}">
         <label>mnemonic-ключ</label>
