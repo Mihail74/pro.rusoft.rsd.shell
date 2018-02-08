@@ -25,7 +25,8 @@
         <span v-if="$v.mnemonic.$error && !$v.mnemonic.required" class="md-error">Обязательно для заполнения</span>
         <span v-else-if="!$v.mnemonic.mnemonic" class="md-error">Некорретный mnemonic-ключ</span>
       </md-input-container>
-      <span v-if="isError" class="md-caption">Ошибка отправки. Попробуйте снова.</span>
+      <span v-if="!isSignCorrect" class="md-caption">Некорректная подпись. Неправильный mnemonic-ключ?</span>
+      <span v-else-if="isError" class="md-caption">Ошибка отправки. Попробуйте снова.</span>
       <md-button class="md-raised md-primary" :disabled="$v.$invalid || isSending" type="submit">
         <div v-if="!isSending">Перечислить</div>
         <md-spinner v-else md-indeterminate :md-size="24"></md-spinner>

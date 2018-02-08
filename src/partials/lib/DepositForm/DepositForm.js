@@ -17,7 +17,8 @@ export default {
       mnemonic: null,
       value: null,
       isSending: false,
-      isError: false
+      isError: false,
+      isSignCorrect: true
     }
   },
   validations: {
@@ -43,7 +44,13 @@ export default {
     }),
     async support () {
       this.isSending = true
+      this.isSignCorrect = true
       this.isError = false
+
+      // TODO: @mdkardaev внутри CPU-intensive операция, поэтому так
+      setTimeout(this.signAndSend, 500)
+    },
+    async signAndSend () {
       try {
         const rawtx = await this.transactionService.createSignedFromInvestingWalletTx({
           fromAddress: this.user.investingWallet.address,
@@ -51,15 +58,17 @@ export default {
           mnemonic: this.mnemonic,
           value: this.value
         })
-        this.deposit({
+        await this.deposit({
           url: `/projects/${this.project.id}/deposit`,
           data: {
             rawtx
           }
-        }).catch(e => {
-          console.log(e)
-          this.isError = true
         })
+      } catch (e) {
+        this.isError = true
+        if (e.response.status === 400) {
+          this.isSignCorrect = false
+        }
       } finally {
         this.isSending = false
       }
