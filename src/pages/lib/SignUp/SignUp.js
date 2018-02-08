@@ -1,4 +1,5 @@
 import { required, sameAs, email } from 'vuelidate/lib/validators'
+import { mnemonic } from 'src/validators'
 import bip39 from 'bip39'
 
 export default {
@@ -31,9 +32,7 @@ export default {
     },
     mnemonic: {
       required,
-      isValidMnemonic: function (value) {
-        return bip39.validateMnemonic(value)
-      }
+      mnemonic
     }
   },
   methods: {

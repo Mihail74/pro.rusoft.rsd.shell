@@ -8,8 +8,7 @@
           </md-layout>
           <md-layout :md-flex="false" md-align="center">
             <div>
-              <div class="md-display-1">Sign in to RSD Investing</div>
-              <div class="md-subheading">Enter your details below</div>
+              <div class="md-display-1">Вход в RSD Investing</div>
             </div>
           </md-layout>
           <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
@@ -18,32 +17,32 @@
             }">
               <label>Email</label>
               <md-input v-model="email" @input="$v.email.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.email.$error && !$v.email.required" class="md-error">Email is a required field</span>
+              <span v-if="$v.email.$error && !$v.email.required" class="md-error">Обязательно для заполнения</span>
             </md-input-container>
             <md-input-container md-has-password :class="{
               'md-input-invalid': $v.password.$error
             }">
-              <label>Password</label>
+              <label>Пароль</label>
               <md-input type="password" v-model="password" @input="$v.password.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.password.$error && !$v.password.required" class="md-error">Password is a required field</span>
+              <span v-if="$v.password.$error && !$v.password.required" class="md-error">Обязательно для заполнения</span>
             </md-input-container>
             <div class="warning" v-if="error">
               <md-icon class="md-warn status">warning</md-icon>
-              <span v-if="wrongCredentialsError">Wrong user credentials</span>
+              <span v-if="wrongCredentialsError">Неверный логин или пароль</span>
               <span v-else="">{{ error }}</span>
             </div>
             <div>
-              <md-button type="submit" class="md-raised md-primary">Log in</md-button>
+              <md-button type="submit" class="md-raised md-primary">Вход</md-button>
             </div>
           </md-layout>
           <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
             <div>
-              <span class="md-body-2">Don't have an account?</span>
-              <a href="/signup">Sign up</a>
+              <span class="md-body-2">Не зарегестрированы?</span>
+              <a href="/signup">Регистрация</a>
             </div>
             <div>
-              <span class="md-body-2">Forgot your password?</span>
-              <a href="/forgot">Recover</a>
+              <span class="md-body-2">Забыли пароль?</span>
+              <a href="/forgot">Восстановить</a>
             </div>
           </md-layout>
         </md-layout>

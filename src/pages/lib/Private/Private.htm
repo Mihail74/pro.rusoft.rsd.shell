@@ -17,7 +17,7 @@
         </md-toolbar>
         <md-list>
           <md-list-item @click="$refs.sidebar.toggle(); $router.push('/private/projects')">
-            <md-icon>apps</md-icon> <span>Projects</span>
+            <md-icon>apps</md-icon> <span>Проекты</span>
           </md-list-item>
         </md-list>
       </md-sidenav>
@@ -39,11 +39,11 @@
               <md-menu-content md-theme="inversed">
                 <md-menu-item @click="$router.push('/private/profiles/i/' + profileId)">
                     <md-icon>account_circle</md-icon>
-                    <span>Profile</span>
+                    <span>Профиль</span>
                 </md-menu-item>
                 <md-menu-item @click="logout">
                   <md-icon>exit_to_app</md-icon>
-                  <span>Log Out</span>
+                  <span>Выход</span>
                 </md-menu-item>
               </md-menu-content>
             </md-menu>

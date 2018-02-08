@@ -8,63 +8,60 @@
           </md-layout>
           <md-layout :md-flex="false" md-align="center">
             <div>
-              <div class="md-display-1">Sign up to RSD Investing</div>
-              <div class="md-subheading">Enter your details below</div>
+              <div class="md-display-1">Вход в RSD Investing</div>
             </div>
           </md-layout>
           <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
             <md-input-container :class="{
               'md-input-invalid': $v.name.$error
             }">
-              <label>Full Name</label>
+              <label>Имя</label>
               <md-input v-model="name" @input="$v.name.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.name.$error && !$v.name.required" class="md-error">Name is a required field</span>
+              <span v-if="$v.name.$error && !$v.name.required" class="md-error">Обязательно для заполнения</span>
             </md-input-container>
             <md-input-container :class="{
               'md-input-invalid': $v.email.$error
             }">
               <label>Email</label>
               <md-input v-model="email" @input="$v.email.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.email.$error && !$v.email.required" class="md-error">Email is a required field</span>
-              <span v-if="$v.email.$error && !$v.email.email" class="md-error">Invalid email address</span>
+              <span v-if="$v.email.$error && !$v.email.required" class="md-error">Обязательно для заполнения</span>
+              <span v-if="$v.email.$error && !$v.email.email" class="md-error">Некорретный email</span>
             </md-input-container>
             <md-input-container md-has-password :class="{
               'md-input-invalid': $v.password.$error
             }">
-              <label>Password</label>
+              <label>Пароль</label>
               <md-input type="password" v-model="password" @input="$v.password.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.password.$error && !$v.password.required" class="md-error">Password is a required field</span>
+              <span v-if="$v.password.$error && !$v.password.required" class="md-error">Обязательно для заполнения</span>
             </md-input-container>
             <md-input-container md-has-password :class="{
               'md-input-invalid': $v.passwordConfirmation.$error
             }">
-              <label>Password Confirmation</label>
+              <label>Подтверждение пароля</label>
               <md-input type="password" v-model="passwordConfirmation" @input="$v.passwordConfirmation.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.required" class="md-error">Password confirmation is a required field</span>
-              <span v-else-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.sameAsPassword" class="md-error">Confirmation should be equal to Password field</span>
+              <span v-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.required" class="md-error">Обязательно для заполнения</span>
+              <span v-else-if="$v.passwordConfirmation.$error && !$v.passwordConfirmation.sameAsPassword" class="md-error">Введенные пароли не совпадают</span>
             </md-input-container>
-            <md-input-container :class="{
-              'md-input-invalid': $v.mnemonic.$error
-            }">
-              <label>Mnemonic</label>
-              <md-input v-model="mnemonic" @input="$v.mnemonic.$touch()" class="input-auto"></md-input>
-              <span v-if="$v.mnemonic.$error && !$v.mnemonic.required" class="md-error">Mnemonic is a required field</span>
-              <span v-else-if="!$v.mnemonic.isValidMnemonic" class="md-error">Mnemonic invalid</span>
-              <md-button @click="generateMnemonic">Generate</md-button>
+            <md-input-container :class="{'md-input-invalid': $v.mnemonic.$error}">
+              <label>mnemonic-ключ</label>
+              <md-input v-model="mnemonic" @input="$v.mnemonic.$touch()"></md-input>
+              <span v-if="$v.mnemonic.$error && !$v.mnemonic.required" class="md-error">Обязательно для заполнения</span>
+              <span v-else-if="!$v.mnemonic.mnemonic" class="md-error">Некорретный mnemonic-ключ</span>
+              <md-button @click="generateMnemonic">Сгенерировать</md-button>
             </md-input-container>
             <div class="warning" v-if="error">
               <md-icon class="md-warn status">warning</md-icon>
-              <span v-if="alreadyExistUserError">User already exist</span>
+              <span v-if="alreadyExistUserError">Email занят</span>
               <span v-else="">{{ error }}</span>
             </div>
             <div>
-              <md-button type="submit" class="md-raised md-primary">Register</md-button>
+              <md-button type="submit" class="md-raised md-primary">Зарегестрироваться</md-button>
             </div>
           </md-layout>
           <md-layout :md-flex="false" md-flex-offset="16" md-align="center">
             <div>
-              <span class="md-body-2">Already have an account?</span>
-              <a href="/signin">Sign in</a>
+              <span class="md-body-2">Уже зарегестрированы?</span>
+              <a href="/signin">Вход</a>
             </div>
           </md-layout>
         </md-layout>

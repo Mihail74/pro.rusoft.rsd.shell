@@ -2,7 +2,7 @@ import { ProjectShort } from 'src/models'
 import { AddressBalance } from 'src/components'
 import { mapState, mapActions } from 'vuex'
 import { required, numeric, minValue } from 'vuelidate/lib/validators'
-import bip39 from 'bip39'
+import { mnemonic } from 'src/validators'
 
 export default {
   components: {
@@ -23,9 +23,7 @@ export default {
   validations: {
     mnemonic: {
       required,
-      isValidMnemonic: function (value) {
-        return bip39.validateMnemonic(value)
-      }
+      mnemonic
     },
     value: {
       required,
