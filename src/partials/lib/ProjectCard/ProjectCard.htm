@@ -38,9 +38,8 @@
           <balance-doughnut-chart class="chart"
             :project="project"
           />
-          <doughnut-chart class="chart"
-            :config="dateConfig(project)"
-            :label="`${dateLeft(project)} дн.`"
+          <date-doughnut-chart class="chart"
+            :project="project"
           />
         </div>
       </md-card-content>

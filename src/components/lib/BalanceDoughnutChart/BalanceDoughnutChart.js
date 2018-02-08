@@ -17,7 +17,6 @@ export default {
     }
   },
   async created () {
-    console.log(this.project)
     this.subscriber = this.webSocketService.subscribe('addresses', this.project.address, addressDetails => {
       this.loadProject()
     })
@@ -38,8 +37,6 @@ export default {
     getConfig () {
       const targetValue = new BigNumber(this.project.targetValue)
       const current = this.balance
-      console.log(current)
-
       return {
         data: {
           labels: ['Собрано', 'Осталось'],
@@ -53,7 +50,7 @@ export default {
       }
     },
     getLabel () {
-      return this.balance.div(new BigNumber(this.project.targetValue)).mul(100).toFormat(0).toString()
+      return `${this.balance.div(new BigNumber(this.project.targetValue)).mul(100).toFormat(0).toString()}%`
     }
   }
 }

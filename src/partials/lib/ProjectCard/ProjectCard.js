@@ -1,12 +1,11 @@
 import { ProjectShort, DialogModel } from 'src/models'
-import { DoughnutChart, BalanceDoughnutChart } from 'src/components'
+import { DateDoughnutChart, BalanceDoughnutChart } from 'src/components'
 import { DepositModal } from 'src/modals'
 import { mapState } from 'vuex'
-import moment from 'moment'
 
 export default {
   components: {
-    DoughnutChart,
+    DateDoughnutChart,
     BalanceDoughnutChart
   },
   props: {
@@ -36,27 +35,6 @@ export default {
           project: this.project
         }
       }))
-    },
-    dateConfig (project) {
-      const started = moment(project.startedDate)
-      const now = moment()
-      const due = moment(project.dueDate)
-      return {
-        data: {
-          labels: ['Прошло', 'Осталось'],
-          datasets: [{
-            label: 'Цель',
-            data: [now.diff(started, 'days'), due.diff(now, 'days')],
-            borderWidth: [0, 3],
-            backgroundColor: ['#2196f3']
-          }]
-        }
-      }
-    },
-    dateLeft (project) {
-      const now = moment()
-      const due = moment(project.dueDate)
-      return due.diff(now, 'days')
     }
   },
   computed: {

@@ -1,4 +1,4 @@
 <div class="root component-doughnut-chart">
-  <chart class="chart" type="doughnut" :config="getConfig()" :label="label"/>
+  <chart :chartData="getConfig().data" :options="getConfig().options"/>
   <div class="label" v-if="label">{{label}}</div>
 </div>

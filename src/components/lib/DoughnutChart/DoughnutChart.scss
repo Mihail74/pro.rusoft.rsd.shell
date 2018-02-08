@@ -1,9 +1,5 @@
 .root.component-doughnut-chart {
-  min-height: 100%;
-  .chart {
-    width: 100%;
-    min-height: 100%;
-  }
+  position: relative;
   .label {
       position: absolute;
       left: 50%;
