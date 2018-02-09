@@ -7,7 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadein .5s;
 
+  
   >.content {
     display: flex;
     align-items: center;
@@ -16,5 +18,22 @@
     flex: 0 0 auto;
     height: 100%;
     width: 100%;
+    animation: from-down .5s;
   }
+}
+
+@keyframes fadein {
+  from { background-color: rgba(0, 0, 0, 0.0); }
+  to   { background-color: rgba(0, 0, 0, 0.2); }
+}
+
+@keyframes from-down {
+  from { 
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0px);
+    opacity: 1;
+   }
 }
