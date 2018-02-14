@@ -38,7 +38,6 @@ export default {
     getConfig () {
       const targetValue = new BigNumber(this.project.targetValue)
       const current = this.balance
-      
       return {
         data: {
           labels: ['Собрано', 'Осталось'],

@@ -35,6 +35,9 @@ export default {
           project: this.project
         }
       }))
+    },
+    isNewProject (project) {
+      return project.status === 'NEW'
     }
   },
   computed: {

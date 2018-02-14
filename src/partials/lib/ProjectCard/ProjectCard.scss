@@ -4,6 +4,9 @@
 .root.component-project-card {
   @include flex(row, space-between, stretch);
   height: 800px;
+  .card {
+    width: 100%;
+  }
   .project-image {
     height: 200px;
     overflow: hidden;

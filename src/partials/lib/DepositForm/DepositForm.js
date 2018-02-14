@@ -54,7 +54,7 @@ export default {
       // TODO: @mdkardaev внутри CPU-intensive операция, поэтому так
       setTimeout(this.signAndSend, 500)
     },
-    async signAndSend () {     
+    async signAndSend () {
       try {
         const rawtx = await this.transactionService.createSignedFromInvestingWalletTx({
           fromAddress: this.user.investingWallet.address,

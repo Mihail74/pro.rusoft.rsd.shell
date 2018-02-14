@@ -1,5 +1,5 @@
 <div class="root component-project-card">
-  <md-card md-with-hover>
+  <md-card md-with-hover class="card">
     <md-card-media class="project-image">
       <img :src="project.thumbnail.url" />
       <div class="overlay">
@@ -31,7 +31,7 @@
         </div>
       </md-card-content>
     </md-card-area>
-    <md-card-area>
+    <md-card-area v-if="!isNewProject(project)">
       <md-card-content>
         <h4 class="md-caption">Привлекаемые средства:</h4>
         <div class="charts-block">
@@ -44,7 +44,7 @@
         </div>
       </md-card-content>
     </md-card-area>
-    <md-card-actions>
+    <md-card-actions v-if="!isNewProject(project)">
       <md-button class="md-primary md-raised" @click="support(project)">Поддержать</md-button>
     </md-card-actions>
   </md-card>
