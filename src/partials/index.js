@@ -2,3 +2,4 @@ export { default as ProjectsDashboard } from './lib/ProjectsDashboard/ProjectsDa
 export { default as ProfileDetails } from './lib/ProfileDetails/ProfileDetails.vue'
 export { default as DepositForm } from './lib/DepositForm/DepositForm.vue'
 export { default as ProjectCard } from './lib/ProjectCard/ProjectCard.vue'
+export { default as ProjectCreation } from './lib/ProjectCreation/ProjectCreation.vue'

@@ -1,0 +1,23 @@
+<form class="root component-project-creation" novalidate @submit.stop.prevent="submit">
+  <md-input-container>
+    <label>Название</label>
+    <md-input v-model="name"></md-input>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Описание</label>
+    <md-input v-model="description"></md-input>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Цель</label>
+    <md-input type="number" v-model="targetValue"></md-input>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Картинка</label>
+    <md-file accept="image/*" @selected="onFileUpload"></md-file>
+  </md-input-container>
+
+  <md-button type="submit" class="md-raised md-primary">Создать</md-button>
+</form>

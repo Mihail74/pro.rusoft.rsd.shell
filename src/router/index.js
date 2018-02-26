@@ -42,7 +42,8 @@ export default ({ store }) => {
             component: pages.Projects,
             children: [
               { path: '', redirect: 'dashboard' },
-              { path: 'dashboard', component: partials.ProjectsDashboard }
+              { path: 'dashboard', component: partials.ProjectsDashboard },
+              { path: 'create', component: partials.ProjectCreation }
             ]
           },
           {
